@@ -30,39 +30,39 @@ public class MenuInterfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        Boton_Terminar = new javax.swing.JButton();
+        Boton_Mostrar = new javax.swing.JButton();
+        Boton_Generar = new javax.swing.JButton();
+        Boton_Agregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton2.setText("Terminar Programa");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Boton_Terminar.setText("Terminar Programa");
+        Boton_Terminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Boton_TerminarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Mostrar Elemento");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Boton_Mostrar.setText("Mostrar Elemento");
+        Boton_Mostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Boton_MostrarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Generar Reporte");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Boton_Generar.setText("Generar Reporte");
+        Boton_Generar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                Boton_GenerarActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Agregar Elemento");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        Boton_Agregar.setText("Agregar Elemento");
+        Boton_Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                Boton_AgregarActionPerformed(evt);
             }
         });
 
@@ -77,10 +77,10 @@ public class MenuInterfaz extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(Boton_Terminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Boton_Mostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Boton_Generar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Boton_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(jLabel1)))
@@ -92,41 +92,41 @@ public class MenuInterfaz extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addGap(43, 43, 43)
-                .addComponent(jButton5)
+                .addComponent(Boton_Agregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(Boton_Mostrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(Boton_Generar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Boton_Terminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Boton_TerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_TerminarActionPerformed
         this.dispose();
         System.exit(WIDTH);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Boton_TerminarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Boton_MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_MostrarActionPerformed
         MenuImprimirElementos newframe = new MenuImprimirElementos();
         newframe.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_Boton_MostrarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void Boton_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AgregarActionPerformed
         MenuAgregarElementos newframe = new MenuAgregarElementos();
         newframe.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_Boton_AgregarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void Boton_GenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_GenerarActionPerformed
         MenuGenerarReporte newframe = new MenuGenerarReporte();
         newframe.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_Boton_GenerarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,10 +165,10 @@ public class MenuInterfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton Boton_Agregar;
+    private javax.swing.JButton Boton_Generar;
+    private javax.swing.JButton Boton_Mostrar;
+    private javax.swing.JButton Boton_Terminar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
