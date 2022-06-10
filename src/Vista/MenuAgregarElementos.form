@@ -74,11 +74,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Curso"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_CursoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Boton_Profesor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Profesor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_ProfesorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Boton_Estudiante">
       <Properties>
@@ -92,6 +98,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Oferta Laboral"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_OfertaLaboralActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Boton_Menu">
       <Properties>

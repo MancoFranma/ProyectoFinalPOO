@@ -1,4 +1,3 @@
-
 package Funciones;
 
 import Clases.Profesor;
@@ -12,7 +11,6 @@ import java.util.Scanner;
 import Clases.Curso;
 import Clases.OfertaLaboral;
 import java.util.Map;
-
 
 public class Funciones implements Reportable {
     
@@ -257,7 +255,7 @@ public class Funciones implements Reportable {
             System.out.println("NO EXISTE ESTE ESTUDIANTE");
         }
         System.out.println("");
-    } 
+    }
     
     public void CrearEstudiante(){
         Scanner Entrada= new Scanner(System.in);

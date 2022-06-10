@@ -13,10 +13,11 @@ import Funciones.Funciones;
 public class MenuInterfaz extends javax.swing.JFrame {
 
     private Funciones prueba;
+    private int Comando = 0 ;
     /**
      * Creates new form Menu
      */
-    
+      
     public MenuInterfaz(){
         
     }
@@ -106,26 +107,26 @@ public class MenuInterfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_TerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_TerminarActionPerformed
+        this.Comando = 4 ;
+        this.setVisible(false);
         this.dispose();
-        System.exit(WIDTH);
+        System.exit(0);
     }//GEN-LAST:event_Boton_TerminarActionPerformed
 
     private void Boton_MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_MostrarActionPerformed
-        MenuImprimirElementos newframe = new MenuImprimirElementos();
-        newframe.setVisible(true);
+        this.Comando = 2 ;
+        this.setVisible(false);
         
     }//GEN-LAST:event_Boton_MostrarActionPerformed
 
     private void Boton_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AgregarActionPerformed
-        MenuAgregarElementos newframe = new MenuAgregarElementos();
-        newframe.setVisible(true);
-        this.dispose();
+        this.Comando = 1 ;
+        this.setVisible(false);
     }//GEN-LAST:event_Boton_AgregarActionPerformed
 
     private void Boton_GenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_GenerarActionPerformed
-        MenuGenerarReporte newframe = new MenuGenerarReporte();
-        newframe.setVisible(true);
-        this.dispose();
+        this.Comando = 3 ;
+        this.setVisible(false);
     }//GEN-LAST:event_Boton_GenerarActionPerformed
 
     /**
@@ -162,6 +163,10 @@ public class MenuInterfaz extends javax.swing.JFrame {
                 new MenuInterfaz().setVisible(true);
             }
         });
+    }
+
+    public int getComando() {
+        return Comando;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

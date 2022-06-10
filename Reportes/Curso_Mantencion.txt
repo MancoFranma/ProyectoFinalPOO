@@ -1,0 +1,29 @@
+Nombre del Curso: Cuidado Animales
+Categoria del Curso: Animales
+Clave del Curso: CA1
+Fecha Inicio del Curso: 27-03-2022
+Fecha Termino del Curso: 31-04-2022
+
+Profesores que imparten el curso:
+1)
+ Nombre: Anais
+ Apellido: Foix
+ Rut: 22.234.567-1
+ Mail: Anais@mail.com
+ Edad: 20
+ ID PROFESOR: 2
+ 
+
+Alumnos del curso:
+1)
+ Nombre: Diego
+ Apellido: Castro
+ Rut: 8.245.567-8
+ Mail: diego@mail.com
+ 
+2)
+ Nombre: Matias
+ Apellido: Castro
+ Rut: 6.123.845-3
+ Mail: Matias@mail.com
+ 

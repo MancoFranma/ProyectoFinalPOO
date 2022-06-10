@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class MenuGenerarReporte extends javax.swing.JFrame {
 
-    Funciones prueba = new Funciones();
+    private int Comando = 0 ;
     
     /**
      * Creates new form MenuGenerarReporte
@@ -109,21 +109,23 @@ public class MenuGenerarReporte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_MenuActionPerformed
-        MenuInterfaz newframe = new MenuInterfaz();
-        newframe.setVisible(true);
+        this.Comando = 4 ;
         this.dispose();
     }//GEN-LAST:event_Boton_MenuActionPerformed
 
     private void Boton_EstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EstudianteActionPerformed
-        
+        this.Comando = 3 ;
+        this.dispose();
     }//GEN-LAST:event_Boton_EstudianteActionPerformed
 
     private void Boton_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_CursoActionPerformed
-        
+        this.Comando = 1 ;
+        this.dispose();
     }//GEN-LAST:event_Boton_CursoActionPerformed
 
     private void Boton_ProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ProfesorActionPerformed
-        
+        this.Comando = 2 ;
+        this.dispose();
     }//GEN-LAST:event_Boton_ProfesorActionPerformed
 
     /**
@@ -161,6 +163,10 @@ public class MenuGenerarReporte extends javax.swing.JFrame {
         });
     }
 
+    public int getComando() {
+        return Comando;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Curso;
     private javax.swing.JButton Boton_Estudiante;

@@ -9,7 +9,8 @@ package Vista;
  * @author franm
  */
 public class MenuAgregarElementos extends javax.swing.JFrame {
-
+    
+    private int Comando = 0 ;
     /**
      * Creates new form MenuAgregarElementos
      */
@@ -38,8 +39,18 @@ public class MenuAgregarElementos extends javax.swing.JFrame {
         jLabel1.setText("Que decea agregar?");
 
         Boton_Curso.setText("Curso");
+        Boton_Curso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_CursoActionPerformed(evt);
+            }
+        });
 
         Boton_Profesor.setText("Profesor");
+        Boton_Profesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_ProfesorActionPerformed(evt);
+            }
+        });
 
         Boton_Estudiante.setText("Estudiante");
         Boton_Estudiante.addActionListener(new java.awt.event.ActionListener() {
@@ -49,6 +60,11 @@ public class MenuAgregarElementos extends javax.swing.JFrame {
         });
 
         Boton_OfertaLaboral.setText("Oferta Laboral");
+        Boton_OfertaLaboral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_OfertaLaboralActionPerformed(evt);
+            }
+        });
 
         Boton_Menu.setText("Volver al menu principal");
         Boton_Menu.addActionListener(new java.awt.event.ActionListener() {
@@ -99,14 +115,29 @@ public class MenuAgregarElementos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_EstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EstudianteActionPerformed
-        // TODO add your handling code here:
+        this.Comando = 3 ;
+        this.dispose();
     }//GEN-LAST:event_Boton_EstudianteActionPerformed
 
     private void Boton_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_MenuActionPerformed
-        MenuInterfaz newframe = new MenuInterfaz();
-        newframe.setVisible(true);
+        this.Comando = 5 ;
         this.dispose();
     }//GEN-LAST:event_Boton_MenuActionPerformed
+
+    private void Boton_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_CursoActionPerformed
+        this.Comando = 1 ;
+        this.dispose();
+    }//GEN-LAST:event_Boton_CursoActionPerformed
+
+    private void Boton_ProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ProfesorActionPerformed
+        this.Comando = 2 ;
+        this.dispose();
+    }//GEN-LAST:event_Boton_ProfesorActionPerformed
+
+    private void Boton_OfertaLaboralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_OfertaLaboralActionPerformed
+        this.Comando = 4 ;
+        this.dispose();
+    }//GEN-LAST:event_Boton_OfertaLaboralActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +174,10 @@ public class MenuAgregarElementos extends javax.swing.JFrame {
         });
     }
 
+    public int getComando() {
+        return Comando;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Curso;
     private javax.swing.JButton Boton_Estudiante;

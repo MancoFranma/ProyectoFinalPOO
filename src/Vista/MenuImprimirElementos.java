@@ -9,7 +9,7 @@ package Vista;
  * @author franm
  */
 public class MenuImprimirElementos extends javax.swing.JFrame {
-
+    private int Comando  = 0 ;
     /**
      * Creates new form MenuImprimirElementos
      */
@@ -38,8 +38,18 @@ public class MenuImprimirElementos extends javax.swing.JFrame {
         jLabel1.setText("Que decea Imprimir?");
 
         Boton_Estudiante.setText("Listado de Alumnos");
+        Boton_Estudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_EstudianteActionPerformed(evt);
+            }
+        });
 
         Boton_Profesores.setText("Listado de Profesores");
+        Boton_Profesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_ProfesoresActionPerformed(evt);
+            }
+        });
 
         Boton_Cursos.setText("Listado de Cursos");
         Boton_Cursos.addActionListener(new java.awt.event.ActionListener() {
@@ -99,16 +109,29 @@ public class MenuImprimirElementos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_CursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_CursosActionPerformed
-        // TODO add your handling code here:
+        this.Comando = 3 ;
+        this.dispose();
     }//GEN-LAST:event_Boton_CursosActionPerformed
 
     private void Boton_OfertasLaboralesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_OfertasLaboralesActionPerformed
-        // TODO add your handling code here:
+        this.Comando = 4 ;
+        this.dispose();
     }//GEN-LAST:event_Boton_OfertasLaboralesActionPerformed
 
     private void Boton_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_MenuActionPerformed
+        this.Comando = 5 ;
         this.dispose();
     }//GEN-LAST:event_Boton_MenuActionPerformed
+
+    private void Boton_EstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EstudianteActionPerformed
+        this.Comando = 1 ;
+        this.dispose();
+    }//GEN-LAST:event_Boton_EstudianteActionPerformed
+
+    private void Boton_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ProfesoresActionPerformed
+        this.Comando = 2 ;
+        this.dispose();
+    }//GEN-LAST:event_Boton_ProfesoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,6 +168,10 @@ public class MenuImprimirElementos extends javax.swing.JFrame {
         });
     }
 
+    public int getComando() {
+        return Comando;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Cursos;
     private javax.swing.JButton Boton_Estudiante;

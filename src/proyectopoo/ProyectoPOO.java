@@ -4,6 +4,7 @@ import Funciones.Menu;
 import Funciones.Funciones;
 import java.io.IOException;
 import Vista.*;
+import java.util.concurrent.TimeUnit;
 
 /*
     Integrantes:
@@ -14,44 +15,94 @@ import Vista.*;
 */
 
 public class ProyectoPOO {
-    public static void main(String[] args)throws IOException { 
+    public static void main(String[] args)throws IOException, InterruptedException { 
         Funciones prueba = new Funciones();
-        Menu pruebaMenu = new Menu();
-        int Opcion = 0 ;
         prueba.leerCursos();
         prueba.LeerProfesores();     
         prueba.LeerEstudiantes();     
         prueba.leerOfertaLaboral();
-        
         MenuInterfaz menu = new MenuInterfaz(prueba);
-        menu.setVisible(true);
+        int comando = 0 ;
         
-        while (Opcion != 12){
-            Opcion = pruebaMenu.Menu(); 
-            switch(Opcion)
+        while (comando != 4){
+            menu.setVisible(true);
+            TimeUnit.SECONDS.sleep(10);
+            comando = menu.getComando();
+            int comando2 = 0 ;
+            switch(comando)
             {    
-                case 1 : prueba.CrearEstudiante();
-                         break;
-                case 2 : prueba.CrearProfesor();
-                         break;
-                case 3 : prueba.CrearCurso();
-                         break;
-                case 4 : prueba.CrearOfertaLaboral();
-                         break;
-                case 5 : prueba.mostrarEstudiantes();
-                         break;
-                case 6 : prueba.mostrarProfesores();
-                         break;
-                case 7 : prueba.mostrarCursos();
-                         break;
-                case 8 : prueba.mostrarOfertasLaborales(); 
-                         break;
-                case 9 : prueba.GenerarReporteCurso();
-                         break;
-                case 10 : prueba.GenerarReporteProfesor();
-                         break;
-                case 11 : prueba.GenerarReporteEstudiante();
-                         break;
+                case 1 :
+                        MenuAgregarElementos menuAgregar = new MenuAgregarElementos();
+                        menuAgregar.setVisible(true);
+                        while (comando2 != 5){
+                            int flag = 0 ;
+                            comando2 = menuAgregar.getComando();
+                            switch(comando2)
+                            {    
+                                case 1 : prueba.CrearEstudiante();
+                                         flag = 1 ;
+                                         break;
+                                case 2 : prueba.CrearProfesor();
+                                         flag = 1 ;
+                                         break;
+                                case 3 : prueba.CrearCurso();
+                                         flag = 1 ;
+                                         break;
+                                case 4 : prueba.CrearOfertaLaboral();
+                                         flag = 1 ;
+                                         break;
+                            }
+                            if(flag == 1)
+                                break;
+                        }
+                        break;
+                case 2 :
+                        MenuImprimirElementos menuImprimir = new MenuImprimirElementos();
+                        menuImprimir.setVisible(true);
+                        while (comando2 != 5){
+                            int flag = 0 ;
+                            comando2 = menuImprimir.getComando();
+                            switch(comando2)
+                            {    
+                                case 1 : prueba.mostrarEstudiantes();
+                                         flag = 1;
+                                         break;
+                                case 2 : prueba.mostrarProfesores();
+                                         flag = 1;
+                                         break;
+                                case 3 : prueba.mostrarCursos();
+                                         flag = 1;
+                                         break;
+                                case 4 : prueba.mostrarOfertasLaborales();
+                                         flag = 1;
+                                         break;
+                            }
+                            if(flag == 1)
+                                break;
+                        }
+                        break;
+                case 3 :
+                        MenuGenerarReporte menuReporte = new MenuGenerarReporte();
+                        menuReporte.setVisible(true);
+                        while (comando2 != 4){
+                            int flag = 0 ;
+                            comando2 = menuReporte.getComando();
+                            switch(comando2)
+                            {    
+                                case 1 : prueba.GenerarReporteCurso();
+                                         flag = 1;
+                                         break;
+                                case 2 : prueba.GenerarReporteProfesor();
+                                         flag = 1;
+                                         break;
+                                case 3 : prueba.GenerarReporteEstudiante();
+                                         flag = 1;
+                                         break;
+                            }
+                            if(flag == 1)
+                                break ;
+                        }
+                        break;
             }
         }
     }    
