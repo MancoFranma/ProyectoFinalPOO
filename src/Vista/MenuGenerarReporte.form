@@ -23,21 +23,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="Boton_Menu" max="32767" attributes="0"/>
-                          <Component id="Boton_Estudiante" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Boton_Profesor" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Boton_Curso" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="Boton_Estudiante" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Boton_Profesor" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Boton_Curso" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Boton_Menu" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="113" max="32767" attributes="0"/>
           </Group>
@@ -47,16 +40,16 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="16" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Boton_Curso" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Boton_Profesor" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Boton_Estudiante" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Boton_Menu" min="-2" pref="31" max="-2" attributes="0"/>
-              <EmptySpace pref="75" max="32767" attributes="0"/>
+              <EmptySpace pref="80" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,7 +57,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Que desea Generar Reporte"/>
+        <Property name="text" type="java.lang.String" value="&#xbf;Qu&#xe9; reporte desea generar?"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Boton_Curso">

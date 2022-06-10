@@ -30,10 +30,14 @@
                   <Component id="Boton_Profesores" alignment="0" max="32767" attributes="0"/>
                   <Component id="Boton_Cursos" alignment="0" max="32767" attributes="0"/>
                   <Component id="Boton_OfertasLaborales" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabel1" alignment="1" min="-2" pref="142" max="-2" attributes="0"/>
                   <Component id="Boton_Menu" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="111" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,9 +54,9 @@
               <Component id="Boton_Cursos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Boton_OfertasLaborales" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Boton_Menu" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +64,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Que decea Imprimir?"/>
+        <Property name="text" type="java.lang.String" value="&#xbf;Que desea imprimir?"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Boton_Estudiante">
