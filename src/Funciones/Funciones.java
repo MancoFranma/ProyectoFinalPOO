@@ -210,7 +210,7 @@ public class Funciones implements Reportable {
             System.out.print(this.Estudiantes.get(i).getRut()+" ");
             System.out.print(this.Estudiantes.get(i).getMail()+" ");
             for(int j=0; j<Estudiantes.get(i).getSizeCursosMatriculados(); j++){
-                System.out.print(this.Estudiantes.get(i).getCursosMatriculados().get(j)+" ");
+                System.out.print(this.Estudiantes.get(i).getCursosMatriculados().get(j).getNombre()+" , ");
             }
             System.out.println("");
         }

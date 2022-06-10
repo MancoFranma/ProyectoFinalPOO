@@ -178,6 +178,10 @@ public class MenuInterfaz extends javax.swing.JFrame {
         return Comando;
     }
 
+    public void resetComando(){
+        this.Comando = 0 ;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Agregar;
     private javax.swing.JButton Boton_Generar;

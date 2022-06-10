@@ -26,7 +26,6 @@ public class ProyectoPOO {
         
         while (comando != 4){
             menu.setVisible(true);
-            TimeUnit.SECONDS.sleep(10);
             comando = menu.getComando();
             int comando2 = 0 ;
             switch(comando)
@@ -104,6 +103,7 @@ public class ProyectoPOO {
                         }
                         break;
             }
+            menu.resetComando();
         }
     }    
 }
