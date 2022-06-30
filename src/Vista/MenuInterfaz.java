@@ -4,7 +4,6 @@
  */
 package Vista;
 
-import Funciones.Funciones;
 
 /**
  *
@@ -12,20 +11,13 @@ import Funciones.Funciones;
  */
 public class MenuInterfaz extends javax.swing.JFrame {
 
-    private Funciones prueba;
     private int Comando = 0 ;
     /**
      * Creates new form Menu
      */
-      
-    public MenuInterfaz(){
-        
-    }
     
-    public MenuInterfaz(Funciones prueba) {
+    public MenuInterfaz() {
         initComponents();
-        this.prueba = new Funciones();
-        this.prueba = prueba;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

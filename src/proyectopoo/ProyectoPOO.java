@@ -1,11 +1,12 @@
 package proyectopoo;
 
-import Funciones.Menu;
-import Funciones.Funciones;
+import Clases.Curso;
+import Clases.Estudiante;
+import Clases.OfertaLaboral;
+import Clases.Profesor;
+import Funciones.Reportes;
 import java.io.IOException;
 import Vista.*;
-import java.util.concurrent.TimeUnit;
-
 /*
     Integrantes:
     
@@ -13,16 +14,21 @@ import java.util.concurrent.TimeUnit;
     Anais Monserrat Foix Monardes  20.834.761-6
     Sofia Carolina Menzel Madrid   20.478.743-3
 */
-
 public class ProyectoPOO {
     public static void main(String[] args)throws IOException, InterruptedException { 
-        Funciones prueba = new Funciones();
-        prueba.leerCursos();
-        prueba.LeerProfesores();     
-        prueba.LeerEstudiantes();     
-        prueba.leerOfertaLaboral();
-        MenuInterfaz menu = new MenuInterfaz(prueba);
+        
+        Reportes FuncionesReportes = new Reportes();
+        Estudiante Estudiantes = new Estudiante();
+        Profesor Profesores = new Profesor();
+        OfertaLaboral OfertaLaborales = new OfertaLaboral();
+        Curso Cursos = new Curso();
+        MenuInterfaz menu = new MenuInterfaz();
         int comando = 0 ;
+        
+        Cursos.leerCursos();
+        Estudiantes.LeerEstudiantes(Cursos);
+        Profesores.LeerProfesores();
+        OfertaLaborales.leerOfertaLaboral();
         
         while (comando != 4){
             menu.setVisible(true);
@@ -38,16 +44,16 @@ public class ProyectoPOO {
                             comando2 = menuAgregar.getComando();
                             switch(comando2)
                             {    
-                                case 1 : prueba.CrearEstudiante();
+                                case 1 : Estudiantes.CrearEstudiante(Cursos);
                                          flag = 1 ;
                                          break;
-                                case 2 : prueba.CrearProfesor();
+                                case 2 : Profesores.CrearProfesor();
                                          flag = 1 ;
                                          break;
-                                case 3 : prueba.CrearCurso();
+                                case 3 : Cursos.CrearCurso();
                                          flag = 1 ;
                                          break;
-                                case 4 : prueba.CrearOfertaLaboral();
+                                case 4 : OfertaLaborales.CrearOfertaLaboral();
                                          flag = 1 ;
                                          break;
                             }
@@ -63,16 +69,16 @@ public class ProyectoPOO {
                             comando2 = menuImprimir.getComando();
                             switch(comando2)
                             {    
-                                case 1 : prueba.mostrarEstudiantes();
+                                case 1 : Estudiantes.mostrarEstudiantes();
                                          flag = 1;
                                          break;
-                                case 2 : prueba.mostrarProfesores();
+                                case 2 : Profesores.mostrarProfesores();
                                          flag = 1;
                                          break;
-                                case 3 : prueba.mostrarCursos();
+                                case 3 : Cursos.mostrarCursos();
                                          flag = 1;
                                          break;
-                                case 4 : prueba.mostrarOfertasLaborales();
+                                case 4 : OfertaLaborales.mostrarOfertasLaborales();
                                          flag = 1;
                                          break;
                             }
@@ -88,13 +94,13 @@ public class ProyectoPOO {
                             comando2 = menuReporte.getComando();
                             switch(comando2)
                             {    
-                                case 1 : prueba.GenerarReporteCurso();
+                                case 1 : FuncionesReportes.GenerarReporteCurso(Cursos,Estudiantes,Profesores,OfertaLaborales);
                                          flag = 1;
                                          break;
-                                case 2 : prueba.GenerarReporteProfesor();
+                                case 2 : FuncionesReportes.GenerarReporteProfesor(Cursos,Estudiantes,Profesores,OfertaLaborales);
                                          flag = 1;
                                          break;
-                                case 3 : prueba.GenerarReporteEstudiante();
+                                case 3 : FuncionesReportes.GenerarReporteEstudiante(Cursos,Estudiantes,Profesores,OfertaLaborales);
                                          flag = 1;
                                          break;
                             }
@@ -105,5 +111,6 @@ public class ProyectoPOO {
             }
             menu.resetComando();
         }
-    }    
+    }
+
 }
