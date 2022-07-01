@@ -12,7 +12,7 @@ public class Estudiante extends Persona{
     
     private ArrayList<Curso> ArrayListCursosMatriculados;
     HashMap<String, Curso>CursosMatriculados;
-    public ArrayList <Estudiante> Estudiantes = new ArrayList <Estudiante>();
+    private ArrayList <Estudiante> Estudiantes = new ArrayList <Estudiante>();
 
     public Estudiante() {
         CursosMatriculados=new HashMap<String, Curso>();
@@ -37,6 +37,14 @@ public class Estudiante extends Persona{
     
     public int getSizeCursosMatriculados(){
         return ArrayListCursosMatriculados.size();
+    }
+
+    public ArrayList<Estudiante> getEstudiantes() {
+        return Estudiantes;
+    }
+
+    public void setEstudiantes(ArrayList<Estudiante> Estudiantes) {
+        this.Estudiantes = Estudiantes;
     }
     
     public Curso buscarCursoPorClave(String Clave){
@@ -84,10 +92,10 @@ public class Estudiante extends Persona{
                     case 4: {                        
                         String [] ClaveCursos=acceso.get_csvField(linea, i).split(",");
                         for (int j = 0; j < ClaveCursos.length; j++) {
-                            for (int k = 0; k < Cursos.Cursos.size(); k++) {
-                                if (Cursos.Cursos.get(k).getNombre().equals(ClaveCursos[j])) {                                                                        
-                                    nuevoEstudiante.setArrayListCursosMatriculados(Cursos.Cursos.get(k));
-                                    nuevoEstudiante.setCursoMapa(Cursos.Cursos.get(k));
+                            for (int k = 0; k < Cursos.getCursos().size(); k++) {
+                                if (Cursos.getCursos().get(k).getNombre().equals(ClaveCursos[j])) {                                                                        
+                                    nuevoEstudiante.setArrayListCursosMatriculados(Cursos.getCursos().get(k));
+                                    nuevoEstudiante.setCursoMapa(Cursos.getCursos().get(k));
                                 }
                             }
                         }
@@ -210,10 +218,10 @@ public class Estudiante extends Persona{
         for (int i = 0 ; i < DATOINT ; i++){
             System.out.println("Ingrese la Clave del curso nr" + i + " al que asiste el estudiante");
             DATOSTRING =(Entrada.next());
-            for (int j = 0 ; j < Cursos.Cursos.size();j++){
-                if(Cursos.Cursos.get(j).getClaveCurso().equals(DATOSTRING)){
-                    nuevoEstudiante.setArrayListCursosMatriculados(Cursos.Cursos.get(j));
-                    nuevoEstudiante.setCursoMapa(Cursos.Cursos.get(j));
+            for (int j = 0 ; j < Cursos.getCursos().size();j++){
+                if(Cursos.getCursos().get(j).getClaveCurso().equals(DATOSTRING)){
+                    nuevoEstudiante.setArrayListCursosMatriculados(Cursos.getCursos().get(j));
+                    nuevoEstudiante.setCursoMapa(Cursos.getCursos().get(j));
                     break;
                 }
                 else{
@@ -228,7 +236,7 @@ public class Estudiante extends Persona{
                     CursosX.setCategoria(Entrada.next());
                     System.out.println("Ingrese el ID del profesor que impartira el curso nr" + i + " al que asiste el estudiante");
                     CursosX.setIdProfesor(Entrada.nextInt());
-                    Cursos.Cursos.add(CursosX);
+                    Cursos.getCursos().add(CursosX);
                     nuevoEstudiante.setArrayListCursosMatriculados(CursosX);
                     nuevoEstudiante.setCursoMapa(CursosX);
                 }

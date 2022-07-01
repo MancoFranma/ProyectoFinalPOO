@@ -12,7 +12,7 @@ public class Profesor extends Persona{
     private int IdProfesor;    
     private int Edad;
     private ArrayList<String> Cursos;
-    public ArrayList <Profesor> Profesores = new ArrayList <Profesor>();
+    private ArrayList <Profesor> Profesores = new ArrayList <Profesor>();
         
     static void add(Profesor ProfesorX) {
         throw new UnsupportedOperationException("Not supported yet."); 
@@ -51,6 +51,14 @@ public class Profesor extends Persona{
     
     public int getSize(){
         return Cursos.size();
+    }
+
+    public ArrayList<Profesor> getProfesores() {
+        return Profesores;
+    }
+
+    public void setProfesores(ArrayList<Profesor> Profesores) {
+        this.Profesores = Profesores;
     }
     
     public String DarDatos(int a){

@@ -11,7 +11,7 @@ public class OfertaLaboral {
     private String Categoria;
     private int Sueldo;
     private ArrayList<String> Requerimientos;  
-    public ArrayList <OfertaLaboral> OfertasLaborales = new ArrayList <OfertaLaboral>();
+    private ArrayList <OfertaLaboral> OfertasLaborales = new ArrayList <OfertaLaboral>();
 
     public OfertaLaboral() {
         this.Requerimientos = new ArrayList<String>();
@@ -51,6 +51,14 @@ public class OfertaLaboral {
 
     public int getSizeRequerimientos(){
         return Requerimientos.size();
+    }
+
+    public ArrayList<OfertaLaboral> getOfertasLaborales() {
+        return OfertasLaborales;
+    }
+
+    public void setOfertasLaborales(ArrayList<OfertaLaboral> OfertasLaborales) {
+        this.OfertasLaborales = OfertasLaborales;
     }
     
     /**

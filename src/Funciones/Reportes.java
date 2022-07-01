@@ -32,34 +32,34 @@ public class Reportes {
         Scanner Entrada= new Scanner(System.in);
         int Opcion ;
         System.out.println("Generar el reporte del curso:");
-        for(int i = 0 ; i < ListaCursos.Cursos.size();i++){
-            System.out.println(i + 1 + ": "  +ListaCursos.Cursos.get(i).getNombre());
+        for(int i = 0 ; i < ListaCursos.getCursos().size();i++){
+            System.out.println(i + 1 + ": "  +ListaCursos.getCursos().get(i).getNombre());
         }
-        System.out.println(ListaCursos.Cursos.size());
+        System.out.println(ListaCursos.getCursos().size());
         Opcion = Entrada.nextInt();
-        if(Opcion - 1 > ListaCursos.Cursos.size() ){
+        if(Opcion - 1 > ListaCursos.getCursos().size() ){
             System.out.println("Opcion Ingresada no es valida");
             return ;
         }
         try{
-            String Ruta = "./Reportes/Curso_"+ListaCursos.Cursos.get(Opcion-1).getNombre()+".txt";
+            String Ruta = "./Reportes/Curso_"+ListaCursos.getCursos().get(Opcion-1).getNombre()+".txt";
             File file = new File(Ruta);
             if (!file.exists()) {
                     file.createNewFile();
             }
-            PrintWriter printWriter = new PrintWriter("./Reportes/Curso_"+ListaCursos.Cursos.get(Opcion-1).getNombre()+".txt");
-            printWriter.println("Nombre del Curso: " + ListaCursos.Cursos.get(Opcion).getNombre());
-            printWriter.println("Categoria del Curso: " + ListaCursos.Cursos.get(Opcion).getCategoria());
-            printWriter.println("Clave del Curso: " + ListaCursos.Cursos.get(Opcion).getClaveCurso());
-            printWriter.println("Fecha Inicio del Curso: " + ListaCursos.Cursos.get(Opcion).getFechaInicio());
-            printWriter.println("Fecha Termino del Curso: " + ListaCursos.Cursos.get(Opcion).getFechaTermino());
+            PrintWriter printWriter = new PrintWriter("./Reportes/Curso_"+ListaCursos.getCursos().get(Opcion-1).getNombre()+".txt");
+            printWriter.println("Nombre del Curso: " + ListaCursos.getCursos().get(Opcion).getNombre());
+            printWriter.println("Categoria del Curso: " + ListaCursos.getCursos().get(Opcion).getCategoria());
+            printWriter.println("Clave del Curso: " + ListaCursos.getCursos().get(Opcion).getClaveCurso());
+            printWriter.println("Fecha Inicio del Curso: " + ListaCursos.getCursos().get(Opcion).getFechaInicio());
+            printWriter.println("Fecha Termino del Curso: " + ListaCursos.getCursos().get(Opcion).getFechaTermino());
             int x = 1 , y = 1 ;
             printWriter.println("");
             printWriter.println("Profesores que imparten el curso:");
-            for(int j=0;j<ListaProfesores.Profesores.size();j++){
-                for(int l=0;l<ListaProfesores.Profesores.get(j).getSize();l++){
-                    if(ListaProfesores.Profesores.get(j).getCursos(l).equals(ListaCursos.Cursos.get(Opcion).getNombre())){
-                        printWriter.print(y + ")\n" + ListaProfesores.Profesores.get(Opcion).DarDatos(1));
+            for(int j=0;j<ListaProfesores.getProfesores().size();j++){
+                for(int l=0;l<ListaProfesores.getProfesores().get(j).getSize();l++){
+                    if(ListaProfesores.getProfesores().get(j).getCursos(l).equals(ListaCursos.getCursos().get(Opcion).getNombre())){
+                        printWriter.print(y + ")\n" + ListaProfesores.getProfesores().get(Opcion).DarDatos(1));
                         printWriter.println(" ");
                         y++;
                     }
@@ -69,13 +69,13 @@ public class Reportes {
                 printWriter.println("NO HAY PROFESORES EN ESTE CURSO"); 
             printWriter.println("");
             printWriter.println("Alumnos del curso:");
-            for(int j=0;j<ListaEstudiantes.Estudiantes.size();j++){
-                for(int l=0; l<ListaEstudiantes.Estudiantes.get(j).getSizeCursosMatriculados();l++){
-                    if(ListaEstudiantes.Estudiantes.get(j).getCursosMatriculados().get(l).getNombre().equals(ListaCursos.Cursos.get(Opcion).getNombre())){
-                        printWriter.println(x + ")\n Nombre: " + ListaEstudiantes.Estudiantes.get(j).getNombre());
-                        printWriter.println(" Apellido: " + ListaEstudiantes.Estudiantes.get(j).getApellido());
-                        printWriter.println(" Rut: " + ListaEstudiantes.Estudiantes.get(j).getRut());
-                        printWriter.println(" Mail: " + ListaEstudiantes.Estudiantes.get(j).getMail());
+            for(int j=0;j<ListaEstudiantes.getEstudiantes().size();j++){
+                for(int l=0; l<ListaEstudiantes.getEstudiantes().get(j).getSizeCursosMatriculados();l++){
+                    if(ListaEstudiantes.getEstudiantes().get(j).getCursosMatriculados().get(l).getNombre().equals(ListaCursos.getCursos().get(Opcion).getNombre())){
+                        printWriter.println(x + ")\n Nombre: " + ListaEstudiantes.getEstudiantes().get(j).getNombre());
+                        printWriter.println(" Apellido: " + ListaEstudiantes.getEstudiantes().get(j).getApellido());
+                        printWriter.println(" Rut: " + ListaEstudiantes.getEstudiantes().get(j).getRut());
+                        printWriter.println(" Mail: " + ListaEstudiantes.getEstudiantes().get(j).getMail());
                         printWriter.println(" ");
                         x=x+1;
                     }
@@ -104,28 +104,28 @@ public class Reportes {
         Scanner Entrada= new Scanner(System.in);
         int Opcion ;
         System.out.println("Generar el reporte del Profesor:");
-        for(int i = 0 ; i < ListaProfesores.Profesores.size();i++){
-            System.out.println(i + 1 + ": "  +ListaProfesores.Profesores.get(i).DarDatos());
+        for(int i = 0 ; i < ListaProfesores.getProfesores().size();i++){
+            System.out.println(i + 1 + ": "  +ListaProfesores.getProfesores().get(i).DarDatos());
         }
         Opcion = Entrada.nextInt()-1;
-        if(Opcion > ListaProfesores.Profesores.size() ){
+        if(Opcion > ListaProfesores.getProfesores().size() ){
             System.out.println("Opcion Ingresada no es valida");
             return ;
         }
         try{
-            String Ruta = "./Reportes/Profesor_"+ListaProfesores.Profesores.get(Opcion).getNombre()+".txt";
+            String Ruta = "./Reportes/Profesor_"+ListaProfesores.getProfesores().get(Opcion).getNombre()+".txt";
             File file = new File(Ruta);
             if (!file.exists()) {
                     file.createNewFile();
             }
-            PrintWriter printWriter = new PrintWriter("./Reportes/Profesor_"+ListaProfesores.Profesores.get(Opcion).getNombre()+".txt");
+            PrintWriter printWriter = new PrintWriter("./Reportes/Profesor_"+ListaProfesores.getProfesores().get(Opcion).getNombre()+".txt");
             printWriter.println("Datos del Profesor:");
             printWriter.println("");
-            printWriter.println(ListaProfesores.Profesores.get(Opcion).DarDatos(1));
+            printWriter.println(ListaProfesores.getProfesores().get(Opcion).DarDatos(1));
             printWriter.println(" Curso que imparte: ");
             printWriter.println("");
-            for(int i=0; i<ListaProfesores.Profesores.get(Opcion).getSize();i++)
-                printWriter.println(i+1+") " + ListaProfesores.Profesores.get(Opcion).getCursos(i)); 
+            for(int i=0; i<ListaProfesores.getProfesores().get(Opcion).getSize();i++)
+                printWriter.println(i+1+") " + ListaProfesores.getProfesores().get(Opcion).getCursos(i)); 
             printWriter.close();
         } catch (Exception  e){
             e.printStackTrace();
@@ -146,25 +146,25 @@ public class Reportes {
         Scanner Entrada= new Scanner(System.in);
         int Opcion ;
         System.out.println("Generar el reporte del Estudiante:");
-        for(int i = 0 ; i < ListaEstudiantes.Estudiantes.size();i++){
-            System.out.println(i + 1 + ": "  +ListaEstudiantes.Estudiantes.get(i).DarDatos());
+        for(int i = 0 ; i < ListaEstudiantes.getEstudiantes().size();i++){
+            System.out.println(i + 1 + ": "  +ListaEstudiantes.getEstudiantes().get(i).DarDatos());
         }
         Opcion = Entrada.nextInt()-1;
-        if(Opcion > ListaEstudiantes.Estudiantes.size() ){
+        if(Opcion > ListaEstudiantes.getEstudiantes().size() ){
             System.out.println("Opcion Ingresada no es valida");
             return ;
         }
         try{
-            String Ruta = "./Reportes/Estudiante_"+ListaEstudiantes.Estudiantes.get(Opcion).getNombre()+".txt";
+            String Ruta = "./Reportes/Estudiante_"+ListaEstudiantes.getEstudiantes().get(Opcion).getNombre()+".txt";
             File file = new File(Ruta);
             if (!file.exists()) {
                     file.createNewFile();
             }
-            PrintWriter printWriter = new PrintWriter("./Reportes/Estudiante_"+ListaEstudiantes.Estudiantes.get(Opcion).getNombre()+".txt");
+            PrintWriter printWriter = new PrintWriter("./Reportes/Estudiante_"+ListaEstudiantes.getEstudiantes().get(Opcion).getNombre()+".txt");
             printWriter.println("Datos del Estudiante:");
-            printWriter.println(ListaEstudiantes.Estudiantes.get(Opcion).DarDatos(1));
-            for(int i=0; i<ListaEstudiantes.Estudiantes.get(Opcion).getSizeCursosMatriculados();i++)
-                printWriter.println(i+1+") " + ListaEstudiantes.Estudiantes.get(Opcion).getCursosMatriculados().get(i).getNombre());
+            printWriter.println(ListaEstudiantes.getEstudiantes().get(Opcion).DarDatos(1));
+            for(int i=0; i<ListaEstudiantes.getEstudiantes().get(Opcion).getSizeCursosMatriculados();i++)
+                printWriter.println(i+1+") " + ListaEstudiantes.getEstudiantes().get(Opcion).getCursosMatriculados().get(i).getNombre());
             printWriter.close();
         } catch (Exception  e){
             e.printStackTrace();

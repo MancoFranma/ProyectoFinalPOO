@@ -15,7 +15,7 @@ public class Curso {
     private String FechaTermino;
     private String Categoria;
     private int IdProfesor;    
-    public ArrayList <Curso> Cursos = new ArrayList <Curso>();
+    private ArrayList <Curso> Cursos = new ArrayList <Curso>();
     
     //Accesores
     public String getNombre(){
@@ -66,7 +66,14 @@ public class Curso {
     public void setIdProfesor(int IdProfesor1){
         IdProfesor=IdProfesor1;
     }
-    
+
+    public ArrayList<Curso> getCursos() {
+        return Cursos;
+    }
+
+    public void setCursos(ArrayList<Curso> Cursos) {
+        this.Cursos = Cursos;
+    }
     
     /**
      * Esta funcion lee los cursos en el archivo excel, en el orden
