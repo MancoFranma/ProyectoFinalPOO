@@ -5,11 +5,11 @@ import java.util.*;
 
 public class CSV
 {
-    //Variables de instancia
+    // VARIABLES DE INSTANCIA
     private BufferedReader file;
     private String currentLine;
 
-    //Constructor
+    // CONSTRUCTOR
 
     /**
      * Constructor de la clase CSV, usada para instanciar una variable con Nombre especifico
@@ -41,7 +41,7 @@ public class CSV
     {
     }
 
-    //Metodos/Funciones
+    // METODOS / FUNCIONES
 
     /**
      * Metodo que entrega la Primera linea del CSV

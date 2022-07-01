@@ -68,7 +68,15 @@ public class Curso {
     }
     
     
-    
+    /**
+     * Esta funcion lee los cursos en el archivo excel, en el orden
+     * nombre, clave del curso, fecha de inicio, fecha de termino, categoria e 
+     * id profesor, es decir lee casilla por casilla, en caso de que la proxima
+     * casilla este vacia, termina.
+     * 
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void leerCursos() throws FileNotFoundException, IOException{
         CSV acceso = new CSV("Curso");
         String linea = acceso.firstLine();
@@ -110,6 +118,9 @@ public class Curso {
             }
     }
 }
+    /**
+     *  Esta funcion muestra los cursos registrados, los imprime por consola.
+     */
     public void mostrarCursos(){
         System.out.println("Cursos :");
         System.out.println("");
@@ -125,6 +136,12 @@ public class Curso {
         System.out.println("");
     }
     
+    /**
+     * Esta funcion muestra un curso en especifico (siempre y cuando este en el 
+     * ArrayList), el cual elige el usuario.
+     * 
+     * @param i se usa como indice, para mostrar un curso determinado del ArrayList.
+     */
     public void mostrarCursoDeterminado(int i){
         if (i > Cursos.size()){
             System.out.println("NO EXISTE ESTE CURSO");
@@ -142,6 +159,14 @@ public class Curso {
         }
     }
     
+    /**
+     * Esta funcion muestra un curso por su clave 
+     * (siempre y cuando esté en el ArrayList, es decir registrado, 
+     * en caso de que no lo este, muestra un mensaje por pantalla indicandolo), 
+     * el cual elige el usuario y se muestra por consola.
+     * 
+     * @param claveCurso es una variable la cual almacenara la clave del curso.
+     */
     public void mostrarCursoDeterminado(String claveCurso){
         
         int a = 0 ;
@@ -166,6 +191,13 @@ public class Curso {
         System.out.println("");
     }
     
+    /**
+     * Esta funcion crea un curso (desde consola), ingresando en un orden
+     * correspondiente, la clave del curso (con la cual se busca si ya esta
+     * registrado, si lo esta, no se agrega y si no esta, se sigue el registro), nombre,
+     * fecha inicio, fecha termino, categoria e id profesor, después de todo el ingreso
+     * se crea un objeto de tipo 'Curso' y se agrega.
+     */
     public void CrearCurso(){
         Scanner Entrada= new Scanner(System.in);
         System.out.println("Ingrese Clave del Curso");

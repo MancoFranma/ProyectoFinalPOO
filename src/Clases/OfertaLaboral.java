@@ -53,6 +53,13 @@ public class OfertaLaboral {
         return Requerimientos.size();
     }
     
+    /**
+     * En esta funcion se almacena la oferta laboral desde un excel, se lee su
+     * nombre, categoria y sueldo, finalmente se agrega.
+     * 
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void leerOfertaLaboral() throws FileNotFoundException, IOException{
         CSV acceso = new CSV("OfertasLaborales");
         String linea = acceso.firstLine();
@@ -89,6 +96,12 @@ public class OfertaLaboral {
             }
     }
 }
+    
+    /**
+     * Esta funcion muestra las ofertas laborales disponibles, presentando sus
+     * datos correspondientes por consola, como el nombre, categoria, sueldo y 
+     * requerimientos.
+     */
     public void mostrarOfertasLaborales(){
         System.out.println("Ofertas Laborales Disponibles:");
         System.out.println("");
@@ -104,6 +117,14 @@ public class OfertaLaboral {
         System.out.println("");
     }
     
+    /**
+     * Esta funcion muestra una oferta laboral determinada, la cual elegira el
+     * usuario por consola, en caso de no existir se imprime un mensaje
+     * indicandolo, en caso de que exista se imprimen sus datos por consola.
+     * 
+     * @param i es la variable que definira el usuario por consola, para mostrar
+     * la oferta laboral en la posicion i en el ArrayList.
+     */
     public void mostrarOfertaLaboralDeterminada(int i){
         if (i > OfertasLaborales.size()){
             System.out.println("NO EXISTE ESTA OFERTA LABORAL");
@@ -122,6 +143,14 @@ public class OfertaLaboral {
         }
     }
     
+    /**
+     * Esta funcion muestra una oferta laboral determinada, la cual elegira el
+     * usuario por consola, escribiendo su nombre, en caso de que exista se imprimen 
+     * sus datos por consola, en caso de no existir se 
+     * imprime un mensaje indicandolo.
+     * 
+     * @param nombreOferta 
+     */
     public void mostrarOfertaLaboralDeterminada(String nombreOferta){
         int a = 0 ;
         for(int i=0; i<this.OfertasLaborales.size(); i++){
@@ -145,6 +174,13 @@ public class OfertaLaboral {
         System.out.println("");
     }
     
+    /**
+     * En esta funcion se crea una oferta laboral, se le piden por consola
+     * sus datos correspondientes, como el nombre, luego se busca si existe, en
+     * caso de existir se imprime un mensaje por consola indicandolo, en caso
+     * de que no exista, se piden los siguientes datos, categoria, 
+     * requerimientos y sueldo.
+     */
     public void CrearOfertaLaboral(){
         Scanner Entrada= new Scanner(System.in);
         OfertaLaboral nuevaOfertaLaboral = new OfertaLaboral();

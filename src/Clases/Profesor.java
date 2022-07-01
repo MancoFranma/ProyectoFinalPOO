@@ -57,6 +57,15 @@ public class Profesor extends Persona{
         return (" Nombre: "+Nombre+"\n"+" Apellido: "+Apellido+"\n"+" Rut: "+Rut+"\n"+" Mail: "+Mail+"\n"+" Edad: "+Edad+"\n"+" ID PROFESOR: "+IdProfesor+"\n");
     }
     
+    /**
+     * En esta funcion de agregan profesores a traves de la lectura en un excel,
+     * se lee casilla por casilla, los datos correspondientes, como id profesor,
+     * nombre, apellido, rut, edad, mail y cursos que dicta, luego el
+     * profesor se agrega a un ArrayList, en caso de que la casilla siguiente a 
+     * la de la ultima lectura este vacia, se termina la lectura.
+     * 
+     * @throws IOException 
+     */
     public void LeerProfesores() throws IOException {
         CSV acceso = new CSV("Profesor");
         String linea = acceso.firstLine();
@@ -106,6 +115,11 @@ public class Profesor extends Persona{
         }
     }
     
+    /**
+     * En esta funcion se muestran todos los profesores registrados, con sus 
+     * datos correspondientes, estos se muestran por consola, como el 
+     * id profesor, nombre, apellido, rut, edad, mail y cursos que dicta.
+     */
     public void mostrarProfesores(){
         System.out.println("PROFESORES :");
         System.out.println("");
@@ -124,9 +138,17 @@ public class Profesor extends Persona{
         System.out.println("");
     }
     
+    /**
+     * Esta funcion muestra a un profesor determinado, en caso de no existir, 
+     * se muestra un mensaje por consola indicando su nula existencia, en caso
+     * de existir se imprimen sus datos correspondientes.
+     * 
+     * @param i refiere al profesor elegido por el usuario, es el indice en el
+     * cual se encontrara el profesor en el ArrayList.
+     */
     public void mostrarProfesores(int i){
         if (i > Profesores.size()){
-            System.out.println("NO EXISTE ESTE CURSO");
+            System.out.println("NO EXISTE ESTE PROFESOR");
         }
         else{    
             System.out.println("Profesor buscado por lista: ");
@@ -143,6 +165,14 @@ public class Profesor extends Persona{
         }
     }
     
+    /**
+     * En esta funcion se crea un profesor ingresando sus datos por consola,
+     * se pide en orden, partiendo por el rut, se busca si este profesor ya
+     * existe, en caso de existir se imprime por pantalla que ya existe y se
+     * cancela el proceso, en caso de no existir, se siguen pidiendo sus datos 
+     * para ala agregacion, id profesor, nombr, apellido, edad, mail y un curso
+     * el cual va a dictar (de principio).
+     */
     public void CrearProfesor(){
         Scanner Entrada= new Scanner(System.in);
         System.out.println("Ingrese RUT");
@@ -170,6 +200,10 @@ public class Profesor extends Persona{
         Profesores.add(nuevoProfesor);
     }
     
+    /**
+     * En esta funcion se muestra al profesor con mas cursos, imprimiendo por
+     * pantalla el nombre, cantidad de cursos y los cursos que dicta.
+     */
     public void MostrarProfesorMasCursos(){
         int i, j, masCursos = 0, indiceProfesorMasCursos = 0;
         for(i = 0; i < this.Profesores.size(); i++){

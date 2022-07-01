@@ -47,6 +47,6 @@ public abstract class Persona {
     }
     
     public String DarDatos(){
-        return (Nombre+" "+Apellido);
+        return (Nombre + " " + Apellido);
     }
 }

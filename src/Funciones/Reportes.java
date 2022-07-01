@@ -18,6 +18,16 @@ import java.util.Scanner;
  */
 public class Reportes {
     
+    /**
+     * En esta funcion se crea un reporte, en el cual se  buscara un curso en 
+     * particular, el cual sera elegido por el usuario, entonces se muestran 
+     * los datos de este a traves de un archivo bloc de notas (txt)
+     * 
+     * @param ListaCursos se usara para buscar todos los cursos.
+     * @param ListaEstudiantes se usara para buscar todos los estudiantes.
+     * @param ListaProfesores se usara para buscar a todos los profesores.
+     * @param ListaOfertas se usara para buscar todas las pfertas laborales.
+     */
     public void GenerarReporteCurso(Curso ListaCursos,Estudiante ListaEstudiantes,Profesor ListaProfesores,OfertaLaboral ListaOfertas){
         Scanner Entrada= new Scanner(System.in);
         int Opcion ;
@@ -80,7 +90,17 @@ public class Reportes {
         
     }
 
-    public void GenerarReporteProfesor(Curso ListaCursos,Estudiante ListaEstudiantes,Profesor ListaProfesores,OfertaLaboral ListaOfertas) {
+    /**
+     * En esta funcion se crea un reporte, en el cual se  buscara un profesor en 
+     * particular, el cual sera elegido por el usuario, entonces se muestran 
+     * los datos de este a traves de un archivo bloc de notas (txt)
+     * 
+     * @param ListaCursos se usara para buscar todos los cursos.
+     * @param ListaEstudiantes se usara para buscar todos los estudiantes.
+     * @param ListaProfesores se usara para buscar a todos los profesores.
+     * @param ListaOfertas se usara para buscar todas las pfertas laborales.
+     */
+    public void GenerarReporteProfesor(Curso ListaCursos, Estudiante ListaEstudiantes, Profesor ListaProfesores, OfertaLaboral ListaOfertas) {
         Scanner Entrada= new Scanner(System.in);
         int Opcion ;
         System.out.println("Generar el reporte del Profesor:");
@@ -112,6 +132,16 @@ public class Reportes {
         }
     }
     
+    /**
+     * En esta funcion se crea un reporte, en el cual se  buscara un estudiante 
+     * en particular, el cual sera elegido por el usuario, entonces se muestran 
+     * los datos de este a traves de un archivo bloc de notas (txt)
+     * 
+     * @param ListaCursos se usara para buscar todos los cursos.
+     * @param ListaEstudiantes se usara para buscar todos los estudiantes.
+     * @param ListaProfesores se usara para buscar a todos los profesores.
+     * @param ListaOfertas se usara para buscar todas las pfertas laborales.
+     */
     public void GenerarReporteEstudiante(Curso ListaCursos,Estudiante ListaEstudiantes,Profesor ListaProfesores,OfertaLaboral ListaOfertas){
         Scanner Entrada= new Scanner(System.in);
         int Opcion ;

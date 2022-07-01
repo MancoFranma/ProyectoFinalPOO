@@ -47,6 +47,16 @@ public class Estudiante extends Persona{
         return ("\n Nombre: "+Nombre+"\n"+" Apellido: "+Apellido+"\n"+" Rut: "+Rut+"\n"+" Mail: "+Mail+"\nCursos Que asiste:\n\n");
     }
     
+    /**
+     * Esta funcion lee las casillas del excel (en caso de estar vacia termina),
+     * crea un objeto de tipo 'Estudiante' y agrega todos sus datos
+     * (leyendo el excel).
+     * 
+     * @param Cursos es de tipo 'Curso' y en esta se almacenara el alumno que
+     * se leera.
+     * 
+     * @throws IOException 
+     */
     public void LeerEstudiantes(Curso Cursos) throws IOException {
         CSV acceso = new CSV("Estudiante");
         String linea = acceso.firstLine();
@@ -92,6 +102,10 @@ public class Estudiante extends Persona{
         }
     }
     
+    /**
+     * Esta funcon muestra por cada estudiante sus cursos matriculados (impresos
+     * por consola).
+     */
     public void mostrarEstudiantes(){
         System.out.println("ESTUDIANTES :");
         System.out.println("");
@@ -108,6 +122,13 @@ public class Estudiante extends Persona{
         System.out.println("");
     }
     
+    /**
+     * Esta funcion muestra un estudiante (por consola) en una posicion determinada del 
+     * ArrayList.
+     * 
+     * @param i refiere a la posicion determinada por el usuario para mostrar
+     * al estudiante en la colocacion i.
+     */
     public void mostrarEstudianteDeterminado(int i){
         if (i > Estudiantes.size()){
             System.out.println("NO EXISTE ESTE ESTUDIANTE");
@@ -126,6 +147,14 @@ public class Estudiante extends Persona{
         }
     }
     
+    /**
+     * Esta funcion busca a un estudiante determinado por su rut, en caso de que
+     * exista lo mostrara, y si no esta, mostrara un mensaje por consola
+     * indicando su nula existencia.
+     * 
+     * @param Rut es la variable que identifica a cada persona, es unico,
+     * por ende, solo muestra a un estudiante.
+     */
     public void mostrarEstudianteDeterminado(String Rut){
         int a = 0 ;
         for(int i=0; i<this.Estudiantes.size(); i++){
@@ -148,6 +177,15 @@ public class Estudiante extends Persona{
         System.out.println("");
     }
     
+    /**
+     * Esta funcion crea un estudiante, es decir, lo registra en un curso,
+     * se ingresa el rut, se busca si esta en el curso, si ya esta, se manda un
+     * mensaje por consola indicandolo, si no, sigue pidiendo sus datos
+     * correspondientes, como el nombre, apellido, mail y numero de cursos a los
+     * que asiste, y finalmente lo registra.
+     * 
+     * @param Cursos refiere a los cursos en los que esta el estudiante.
+     */
     public void CrearEstudiante(Curso Cursos){
         Scanner Entrada= new Scanner(System.in);
         System.out.println("Ingrese RUT");
@@ -170,7 +208,7 @@ public class Estudiante extends Persona{
         int DATOINT = Entrada.nextInt();
         Curso CursosX = new Curso();
         for (int i = 0 ; i < DATOINT ; i++){
-            System.out.println("Ingrese la Clave del curso nr"+i+ " que asiste el estudiante");
+            System.out.println("Ingrese la Clave del curso nr" + i + " al que asiste el estudiante");
             DATOSTRING =(Entrada.next());
             for (int j = 0 ; j < Cursos.Cursos.size();j++){
                 if(Cursos.Cursos.get(j).getClaveCurso().equals(DATOSTRING)){
@@ -180,15 +218,15 @@ public class Estudiante extends Persona{
                 }
                 else{
                     CursosX.setClaveCurso(DATOSTRING);
-                    System.out.println("Ingrese el nombre del curso nr" +i+ " que asiste el estudiante");
+                    System.out.println("Ingrese el nombre del curso nr" + i + " al que asiste el estudiante");
                     CursosX.setNombre(Entrada.next());
-                    System.out.println("Ingrese la Fecha de Inicio del curso nr"+i+ " que asiste el estudiante");
+                    System.out.println("Ingrese la Fecha de Inicio del curso nr" + i + " al que asiste el estudiante");
                     CursosX.setFechaInicio(Entrada.next());
-                    System.out.println("Ingrese la Fecha de Termino del curso nr"+i+ " que asiste el estudiante");
+                    System.out.println("Ingrese la Fecha de Termino del curso nr" + i + " al que asiste el estudiante");
                     CursosX.setFechaTermino(Entrada.next());
-                    System.out.println("Ingrese la categoria que pertenece el curso nr"+i+" que asiste el estudiante");
+                    System.out.println("Ingrese la categoria que pertenece el curso nr" + i + " al que asiste el estudiante");
                     CursosX.setCategoria(Entrada.next());
-                    System.out.println("Ingrese el ID del profesor que impartira el curso nr"+i+" que asiste el estudiante");
+                    System.out.println("Ingrese el ID del profesor que impartira el curso nr" + i + " al que asiste el estudiante");
                     CursosX.setIdProfesor(Entrada.nextInt());
                     Cursos.Cursos.add(CursosX);
                     nuevoEstudiante.setArrayListCursosMatriculados(CursosX);
@@ -199,6 +237,10 @@ public class Estudiante extends Persona{
         Estudiantes.add(nuevoEstudiante);
     }
     
+    /**
+     * En esta funcion se muestran los estudiantes con una cantidad de cursos 
+     * matriculados entre un rango n y m.
+     */
     public void MostrarAlumnoConCursosEntreNyM(){
         Scanner Entrada = new Scanner (System.in);
         System.out.println("Ingrese un número para empezar el rango de números que abarcará la variable 'n': ");
