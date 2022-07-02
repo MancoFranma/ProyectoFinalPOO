@@ -11,6 +11,6 @@ package Excepciones;
 public class FechaException extends Exception{
     
     public FechaException() {
-        super("Ese no es un formato de fecha, por favor que sea formato DD-MM-AAAA");
+        super("Ese no es un formato de fecha, por favor que sea formato D-M-AAAA o DD-MM-AAAA");
     }
 }
