@@ -64,10 +64,7 @@ public abstract class Persona {
         
         String regularExpression;
         
-        // que contenga un numero del [1 al 99] 1 vez, luego que siga de un '.'
-        // luego que contenga numeros del [0 al 9] 3 veces, luego que siga de un '.'
-        // luego que contenga un '-' y un numero del [0 al 9 o una k] 1 vez
-        regularExpression = "[1-99]{1}.{1}[0-9]{3}.{1}[0-9]{3}-{1}[0-9, k]{1}";
+        regularExpression = "^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$";
         Pattern pat = Pattern.compile(regularExpression);
         Matcher mat = pat.matcher(rut);
         

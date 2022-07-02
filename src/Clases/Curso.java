@@ -82,14 +82,13 @@ public class Curso {
     /**
      * Esta funcion verifica que la fecha escrita siga el formato DD-MM-AAAA.
      * @param fecha es el String que se recibe.
+     * @throws Excepciones.FechaException
      */
     public void ValidarFecha(String fecha) throws FechaException{
         
         String regularExpression;
         
-        // numero del 1 al 31(DIA) seguido de un '-', luego un numero del 1 al 
-        // 12(MES), seguido de '-' y finalmente un numero entre 2022 al 2100
-        regularExpression = "[1-31]{1}-{1}[1-12]{1}-{1}[2022-2100]{1}";
+        regularExpression = "([0][1-9]|[12][0-9]|3[01])(\\/|-)([0][1-9]|[1][0-2])\\2(\\d{4})/g";
         Pattern pat = Pattern.compile(regularExpression);
         Matcher mat = pat.matcher(fecha);
         
@@ -246,7 +245,7 @@ public class Curso {
         nuevoCurso.setNombre(Entrada.next());
         System.out.println("Ingrese la Fecha de Inicio del nuevo Curso");
         nuevoCurso.setFechaInicio(Entrada.next());
-        try {
+        try{
             this.ValidarFecha(DATOSTRING);
         } catch (FechaException ex) {
             ex.printStackTrace();
