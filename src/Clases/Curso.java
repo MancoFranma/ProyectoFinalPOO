@@ -1,10 +1,14 @@
 package Clases;
 
+import Excepciones.FechaException;
+import Excepciones.RutException;
 import Funciones.CSV;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Curso {
 
@@ -73,6 +77,27 @@ public class Curso {
 
     public void setCursos(ArrayList<Curso> Cursos) {
         this.Cursos = Cursos;
+    }
+    
+    /**
+     * Esta funcion verifica que la fecha escrita siga el formato DD-MM-AAAA.
+     * @param fecha es el String que se recibe.
+     */
+    public void ValidarFecha(String fecha) throws FechaException{
+        
+        String regularExpression;
+        
+        // numero del 1 al 31(DIA) seguido de un '-', luego un numero del 1 al 
+        // 12(MES), seguido de '-' y finalmente un numero entre 2022 al 2100
+        regularExpression = "[1-31]{1}-{1}[1-12]{1}-{1}[2022-2100]{1}";
+        Pattern pat = Pattern.compile(regularExpression);
+        Matcher mat = pat.matcher(fecha);
+        
+        if (mat.matches()) {
+            System.out.println("fecha válida");                                                                            
+        } else {
+            throw new FechaException();
+        }
     }
     
     /**
@@ -221,8 +246,20 @@ public class Curso {
         nuevoCurso.setNombre(Entrada.next());
         System.out.println("Ingrese la Fecha de Inicio del nuevo Curso");
         nuevoCurso.setFechaInicio(Entrada.next());
+        try {
+            this.ValidarFecha(DATOSTRING);
+        } catch (FechaException ex) {
+            ex.printStackTrace();
+            return;
+        }
         System.out.println("Ingrese la Fecha de Termino del nuevo Curso");
         nuevoCurso.setFechaTermino(Entrada.next());
+        try {
+            this.ValidarFecha(DATOSTRING);
+        } catch (FechaException ex) {
+            ex.printStackTrace();
+            return;
+        }
         System.out.println("Ingrese el nombre del la Categoria del nuevo Curso");
         nuevoCurso.setCategoria(Entrada.next());
         System.out.println("Ingrese el numero del ID del profesor que imparte el curso");
