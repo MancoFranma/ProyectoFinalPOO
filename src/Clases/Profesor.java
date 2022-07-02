@@ -1,6 +1,7 @@
 package Clases;
 
 import Clases.Persona;
+import Excepciones.RutException;
 import Funciones.CSV;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Profesor extends Persona{
     static void add(Profesor ProfesorX) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
+    
     public Profesor() {
         this.Cursos = new ArrayList<String>();
     }
@@ -49,6 +51,9 @@ public class Profesor extends Persona{
         IdProfesor=IdProfesor1;
     }
     
+    /**
+     * @return el numero de cursos que dicta el profesor
+     */
     public int getSize(){
         return Cursos.size();
     }
@@ -61,6 +66,11 @@ public class Profesor extends Persona{
         this.Profesores = Profesores;
     }
     
+    /**
+     * 
+     * @param a refiere al profesor elegido
+     * @return retorna los datos de el profesor 
+     */
     public String DarDatos(int a){
         return (" Nombre: "+Nombre+"\n"+" Apellido: "+Apellido+"\n"+" Rut: "+Rut+"\n"+" Mail: "+Mail+"\n"+" Edad: "+Edad+"\n"+" ID PROFESOR: "+IdProfesor+"\n");
     }
@@ -185,6 +195,14 @@ public class Profesor extends Persona{
         Scanner Entrada= new Scanner(System.in);
         System.out.println("Ingrese RUT");
         String DATOSTRING = Entrada.next();
+        
+        try {
+            Persona.ValidarRut(DATOSTRING);
+        } catch (RutException ex) {
+            ex.printStackTrace();
+            return;
+        }
+        
         Profesor nuevoProfesor = new Profesor();
         for(int i=0; i<this.Profesores.size(); i++){    
             if (this.Profesores.get(i).getRut().equals(DATOSTRING)){
@@ -224,10 +242,33 @@ public class Profesor extends Persona{
         System.out.println("Con la cantidad de " + masCursos + " cursos");
         System.out.println("Los cuales son:");
         for (i = 0; i < this.Profesores.get(indiceProfesorMasCursos).getCursos(i).length(); i++){
-            // no sé cómo imprimir los cursos del profesor
-            System.out.println((i+1) + ") "+this.Profesores.get(indiceProfesorMasCursos).getCursos(i));
+            System.out.println((i+1) + ") " + this.Profesores.get(indiceProfesorMasCursos).getCursos(i));
         }
         }
+    }
+    
+    /**
+     * Esta es una funcion que permite eliminar un profesor.
+     */
+    public void ElminarProfesor(){
+        
+        int i, j, opcion;
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Que profesor desea eliminar");
+        for (i = 0; i < this.Profesores.size(); i++)
+        {
+            System.out.println((i + 1) + ") " + this.Profesores.get(i).Rut + " " + this.Profesores.get(i).Nombre + " " + this.Profesores.get(i).Apellido);
+        }
+        System.out.println("Elija uno");
+        opcion = sc.nextInt();
+        
+        // eliminar en los cursos que dicta el nombre del profesor
+        for (j = 0; j < this.Profesores.get(opcion-1).getSize(); j++){
+            //this.Profesores.get(opcion-1).Cursos.get(j)
+        }
+        
+        this.Profesores.remove(opcion-1);
     }
     
 }

@@ -230,5 +230,22 @@ public class Curso {
         Cursos.add(nuevoCurso);
     }
     
+    /**
+     * Esta es una funcion que permite eliminar un curso.
+     */
+    public void ElminarCurso(){
+        
+        int i, opcion;
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Que curso desea eliminar");
+        for (i = 0; i < this.Cursos.size(); i++)
+        {
+            System.out.println((i + 1) + ") " + this.Cursos.get(i).ClaveCurso + " " + this.Cursos.get(i).Nombre);
+        }
+        System.out.println("Elija uno");
+        opcion = sc.nextInt();
+        this.Cursos.remove(opcion-1);
+    }
     
 }

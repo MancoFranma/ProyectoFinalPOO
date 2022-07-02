@@ -115,7 +115,7 @@ public class MenuAgregarElementos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_EstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EstudianteActionPerformed
-        this.Comando = 3 ;
+        this.Comando = 1 ;
         this.dispose();
     }//GEN-LAST:event_Boton_EstudianteActionPerformed
 
@@ -125,7 +125,7 @@ public class MenuAgregarElementos extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_MenuActionPerformed
 
     private void Boton_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_CursoActionPerformed
-        this.Comando = 1 ;
+        this.Comando = 3 ;
         this.dispose();
     }//GEN-LAST:event_Boton_CursoActionPerformed
 

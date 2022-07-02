@@ -1,10 +1,15 @@
 package Clases;
 
+import Excepciones.RutException;
 import Funciones.CSV;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Estudiante extends Persona{
 
@@ -198,6 +203,14 @@ public class Estudiante extends Persona{
         Scanner Entrada= new Scanner(System.in);
         System.out.println("Ingrese RUT");
         String DATOSTRING = Entrada.next();
+        
+        try {
+            Persona.ValidarRut(DATOSTRING);
+        } catch (RutException ex) {
+            ex.printStackTrace();
+            return;
+        }
+        
         Estudiante nuevoEstudiante = new Estudiante();
         for(int i=0; i<this.Estudiantes.size(); i++){    
             if (this.Estudiantes.get(i).getRut().equals(DATOSTRING)){
@@ -260,6 +273,25 @@ public class Estudiante extends Persona{
                 System.out.println("El estudiante " + this.Estudiantes.get(i).getNombre() + " " + this.Estudiantes.get(i).getApellido() + " tiene " + this.Estudiantes.get(i).getCursosMatriculados().size() + " cursos matriculados");
             }
         }
+    }
+    
+    /**
+     * Esta es una funcion que permite eliminar un estudiante y todos los cursos
+     * relacionados a este.
+     */
+    public void ElminarEstudiante(){
+        
+        int i, opcion;
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Que alumno desea eliminar");
+        for (i = 0; i < this.Estudiantes.size(); i++)
+        {
+            System.out.println((i + 1) + ") " + this.Estudiantes.get(i).Rut + " " + this.Estudiantes.get(i).Nombre + " " + this.Estudiantes.get(i).Apellido);
+        }
+        System.out.println("Elija uno");
+        opcion = sc.nextInt();
+        this.Estudiantes.remove(opcion-1);
     }
     
 }
