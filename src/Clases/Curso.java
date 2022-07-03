@@ -3,10 +3,13 @@ package Clases;
 import Excepciones.FechaException;
 import Excepciones.RutException;
 import Funciones.CSV;
+import Vista.MenuTexto;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -231,8 +234,7 @@ public class Curso {
      */
     public void CrearCurso(){
         Scanner Entrada= new Scanner(System.in);
-        System.out.println("Ingrese Clave del Curso");
-        String DATOSTRING = Entrada.next();
+        String DATOSTRING = this.ObtenerTexto("Ingrese Clave del Curso");
         Curso nuevoCurso = new Curso();
         for(int i=0; i<this.Cursos.size(); i++){    
             if (this.Cursos.get(i).getClaveCurso().equals(DATOSTRING)){
@@ -241,28 +243,23 @@ public class Curso {
             }
         }
         nuevoCurso.setClaveCurso(DATOSTRING);
-        System.out.println("Ingrese el Nombre del nuevo Curso");
-        nuevoCurso.setNombre(Entrada.next());
-        System.out.println("Ingrese la Fecha de Inicio del nuevo Curso");
-        nuevoCurso.setFechaInicio(Entrada.next());
-        try{
+        nuevoCurso.setNombre(this.ObtenerTexto("Ingrese el Nombre del nuevo Curso"));
+        nuevoCurso.setFechaInicio(this.ObtenerTexto("Ingrese la Fecha de Inicio del nuevo Curso"));
+        /*try{
             this.ValidarFecha(DATOSTRING);
         } catch (FechaException ex) {
             ex.printStackTrace();
             return;
-        }
-        System.out.println("Ingrese la Fecha de Termino del nuevo Curso");
-        nuevoCurso.setFechaTermino(Entrada.next());
-        try {
+        }*/
+        nuevoCurso.setFechaTermino(this.ObtenerTexto("Ingrese la Fecha de Termino del nuevo Curso"));
+        /*try {
             this.ValidarFecha(DATOSTRING);
         } catch (FechaException ex) {
             ex.printStackTrace();
             return;
-        }
-        System.out.println("Ingrese el nombre del la Categoria del nuevo Curso");
-        nuevoCurso.setCategoria(Entrada.next());
-        System.out.println("Ingrese el numero del ID del profesor que imparte el curso");
-        nuevoCurso.setIdProfesor(Entrada.nextInt());
+        }*/
+        nuevoCurso.setCategoria(this.ObtenerTexto("Ingrese el nombre del la Categoria del nuevo Curso"));
+        nuevoCurso.setIdProfesor(Integer.valueOf(this.ObtenerTexto("Ingrese el numero del ID del profesor que imparte el curso")));
         Cursos.add(nuevoCurso);
     }
     
@@ -282,6 +279,24 @@ public class Curso {
         System.out.println("Elija uno");
         opcion = sc.nextInt();
         this.Cursos.remove(opcion-1);
+    }
+    
+    public String ObtenerTexto(String TextoEscribir){
+        String texto = null;
+        MenuTexto menutexto = new MenuTexto(TextoEscribir);
+        menutexto.setVisible(true);
+        while(texto == null){
+            texto = menutexto.getTextoSacado();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(texto!=null)
+                System.out.println("TEXTO Guardado");
+        }
+        menutexto.dispose();
+        return texto;
     }
     
 }
