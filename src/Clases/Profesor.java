@@ -3,9 +3,12 @@ package Clases;
 import Clases.Persona;
 import Excepciones.RutException;
 import Funciones.CSV;
+import Vista.MenuTexto;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Profesor extends Persona{
 
@@ -192,37 +195,26 @@ public class Profesor extends Persona{
      * el cual va a dictar (de principio).
      */
     public void CrearProfesor(){
-        Scanner Entrada= new Scanner(System.in);
-        System.out.println("Ingrese RUT");
-        String DATOSTRING = Entrada.next();
-        
+        Profesor nuevoProfesor = new Profesor();
+        nuevoProfesor.setRut(this.ObtenerTexto("Ingrese RUT"));
         try {
-            Persona.ValidarRut(DATOSTRING);
+            Persona.ValidarRut(nuevoProfesor.getRut());
         } catch (RutException ex) {
             ex.printStackTrace();
             return;
         }
-        
-        Profesor nuevoProfesor = new Profesor();
         for(int i=0; i<this.Profesores.size(); i++){    
-            if (this.Profesores.get(i).getRut().equals(DATOSTRING)){
+            if (this.Profesores.get(i).getRut().equals(nuevoProfesor.getRut())){
                 System.out.println("PROFESOR YA EXISTE");
                 return ;
             }
         }
-        nuevoProfesor.setRut(DATOSTRING);
-        System.out.println("Ingrese el ID del nuevo Profesor");
-        nuevoProfesor.setIdProfesor(Entrada.nextInt());
-        System.out.println("Ingrese el Nombre del nuevo Profesor");
-        nuevoProfesor.setNombre(Entrada.next());
-        System.out.println("Ingrese el Apellido del nuevo Profesor");
-        nuevoProfesor.setApellido(Entrada.next());
-        System.out.println("Ingrese la Edad del nuevo Profesor");
-        nuevoProfesor.setEdad(Entrada.nextInt());
-        System.out.println("Ingrese el mail del nuevo Profesor");
-        nuevoProfesor.setMail(Entrada.next());
-        System.out.println("Ingrese el nombre del curso que imparte el profesor");
-        nuevoProfesor.setCursos(Entrada.next());
+        nuevoProfesor.setIdProfesor(Integer.parseInt(this.ObtenerTexto("Ingrese el ID del nuevo Profesor")));
+        nuevoProfesor.setNombre(this.ObtenerTexto("Ingrese el Nombre del nuevo Profesor"));
+        nuevoProfesor.setApellido(this.ObtenerTexto("Ingrese el Apellido del nuevo Profesor"));
+        nuevoProfesor.setEdad(Integer.parseInt(this.ObtenerTexto("Ingrese la Edad del nuevo Profesor")));
+        nuevoProfesor.setMail(this.ObtenerTexto("Ingrese el mail del nuevo Profesor"));
+        nuevoProfesor.setCursos(this.ObtenerTexto("Ingrese el nombre del curso que imparte el profesor"));
         Profesores.add(nuevoProfesor);
     }
     
@@ -236,14 +228,14 @@ public class Profesor extends Persona{
             if (masCursos < this.Profesores.get(i).getSize()){
                 masCursos = this.Profesores.get(i).getSize();
                 indiceProfesorMasCursos = i;
-        }
-        System.out.println("El profesor con más cursos es:");
-        System.out.println("Nombre Profesor: "+this.Profesores.get(indiceProfesorMasCursos));
-        System.out.println("Con la cantidad de " + masCursos + " cursos");
-        System.out.println("Los cuales son:");
-        for (i = 0; i < this.Profesores.get(indiceProfesorMasCursos).getCursos(i).length(); i++){
-            System.out.println((i+1) + ") " + this.Profesores.get(indiceProfesorMasCursos).getCursos(i));
-        }
+            }
+            System.out.println("El profesor con más cursos es:");
+            System.out.println("Nombre Profesor: "+this.Profesores.get(indiceProfesorMasCursos));
+            System.out.println("Con la cantidad de " + masCursos + " cursos");
+            System.out.println("Los cuales son:");
+            for (i = 0; i < this.Profesores.get(indiceProfesorMasCursos).getCursos(i).length(); i++){
+                System.out.println((i+1) + ") " + this.Profesores.get(indiceProfesorMasCursos).getCursos(i));
+            }
         }
     }
     
@@ -252,23 +244,34 @@ public class Profesor extends Persona{
      */
     public void ElminarProfesor(){
         
-        int i, j, opcion;
-        
-        Scanner sc = new Scanner(System.in);
         System.out.println("Que profesor desea eliminar");
-        for (i = 0; i < this.Profesores.size(); i++)
+        for (int i = 0; i < this.Profesores.size(); i++)
         {
             System.out.println((i + 1) + ") " + this.Profesores.get(i).Rut + " " + this.Profesores.get(i).Nombre + " " + this.Profesores.get(i).Apellido);
         }
-        System.out.println("Elija uno");
-        opcion = sc.nextInt();
-        
+        int opcion = Integer.parseInt(this.ObtenerTexto("Elija uno"));
         // eliminar en los cursos que dicta el nombre del profesor
-        for (j = 0; j < this.Profesores.get(opcion-1).getSize(); j++){
+        for (int j = 0; j < this.Profesores.get(opcion-1).getSize(); j++){
             //this.Profesores.get(opcion-1).Cursos.get(j)
         }
-        
         this.Profesores.remove(opcion-1);
     }
     
+    public String ObtenerTexto(String TextoEscribir){
+        String texto = null;
+        MenuTexto menutexto = new MenuTexto(TextoEscribir);
+        menutexto.setVisible(true);
+        while(texto == null){
+            texto = menutexto.getTextoSacado();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(texto!=null)
+                System.out.println("TEXTO Guardado");
+        }
+        menutexto.dispose();
+        return texto;
+    }
 }

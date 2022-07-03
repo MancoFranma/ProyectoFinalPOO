@@ -1,10 +1,12 @@
 package Clases;
 
 import Funciones.CSV;
+import Vista.MenuTexto;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OfertaLaboral {
     private String NombreOferta;
@@ -190,25 +192,36 @@ public class OfertaLaboral {
      * requerimientos y sueldo.
      */
     public void CrearOfertaLaboral(){
-        Scanner Entrada= new Scanner(System.in);
         OfertaLaboral nuevaOfertaLaboral = new OfertaLaboral();
-        System.out.println("Ingrese Nombre de la nueva Oferta Laboral");
-        String DATOSTRING = Entrada.next();
+        nuevaOfertaLaboral.setNombreOferta(this.ObtenerTexto("Ingrese Nombre de la nueva Oferta Laboral"));
         for(int i=0; i<this.OfertasLaborales.size(); i++){    
-            if (this.OfertasLaborales.get(i).getNombreOferta().equals(DATOSTRING)){
+            if (this.OfertasLaborales.get(i).getNombreOferta().equals(nuevaOfertaLaboral.getNombreOferta())){
                 System.out.println("OFERTA LABORAL YA EXISTE");
                 return ;
             }
         }
-        nuevaOfertaLaboral.setNombreOferta(DATOSTRING);
-        System.out.println("Ingrese la Categoria de la nueva Oferta Laboral");
-        nuevaOfertaLaboral.setCategoria(Entrada.next());
-        System.out.println("Ingrese el Requerimiento necesario para la nueva Oferta Laboral");
-        nuevaOfertaLaboral.setRequerimientos(Entrada.next());
-        System.out.println("Ingrese el Sueldo propuesto de la nueva Oferta Laboral");
-        nuevaOfertaLaboral.setSueldo(Entrada.nextInt());
+        nuevaOfertaLaboral.setCategoria(this.ObtenerTexto("Ingrese la Categoria de la nueva Oferta Laboral"));
+        nuevaOfertaLaboral.setRequerimientos(this.ObtenerTexto("Ingrese el Requerimiento necesario para la nueva Oferta Laboral"));
+        nuevaOfertaLaboral.setSueldo(Integer.parseInt(this.ObtenerTexto("Ingrese el Sueldo propuesto de la nueva Oferta Laboral")));
         OfertasLaborales.add(nuevaOfertaLaboral);
     }
     
+    public String ObtenerTexto(String TextoEscribir){
+        String texto = null;
+        MenuTexto menutexto = new MenuTexto(TextoEscribir);
+        menutexto.setVisible(true);
+        while(texto == null){
+            texto = menutexto.getTextoSacado();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(texto!=null)
+                System.out.println("TEXTO Guardado");
+        }
+        menutexto.dispose();
+        return texto;
+    }
     
 }

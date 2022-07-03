@@ -91,7 +91,7 @@ public class Curso {
         
         String regularExpression;
         
-        regularExpression = "([0][1-9]|[12][0-9]|3[01])(\\/|-)([0][1-9]|[1][0-2])\\2(\\d{4})/g";
+        regularExpression = "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$";
         Pattern pat = Pattern.compile(regularExpression);
         Matcher mat = pat.matcher(fecha);
         
@@ -245,19 +245,19 @@ public class Curso {
         nuevoCurso.setClaveCurso(DATOSTRING);
         nuevoCurso.setNombre(this.ObtenerTexto("Ingrese el Nombre del nuevo Curso"));
         nuevoCurso.setFechaInicio(this.ObtenerTexto("Ingrese la Fecha de Inicio del nuevo Curso"));
-        /*try{
-            this.ValidarFecha(DATOSTRING);
+        try{
+            this.ValidarFecha(nuevoCurso.getFechaInicio() );
         } catch (FechaException ex) {
             ex.printStackTrace();
             return;
-        }*/
+        }
         nuevoCurso.setFechaTermino(this.ObtenerTexto("Ingrese la Fecha de Termino del nuevo Curso"));
-        /*try {
-            this.ValidarFecha(DATOSTRING);
+        try {
+            this.ValidarFecha(nuevoCurso.getFechaTermino() );
         } catch (FechaException ex) {
             ex.printStackTrace();
             return;
-        }*/
+        }
         nuevoCurso.setCategoria(this.ObtenerTexto("Ingrese el nombre del la Categoria del nuevo Curso"));
         nuevoCurso.setIdProfesor(Integer.valueOf(this.ObtenerTexto("Ingrese el numero del ID del profesor que imparte el curso")));
         Cursos.add(nuevoCurso);
@@ -268,16 +268,12 @@ public class Curso {
      */
     public void ElminarCurso(){
         
-        int i, opcion;
-        
-        Scanner sc = new Scanner(System.in);
         System.out.println("Que curso desea eliminar");
-        for (i = 0; i < this.Cursos.size(); i++)
+        for (int i = 0; i < this.Cursos.size(); i++)
         {
             System.out.println((i + 1) + ") " + this.Cursos.get(i).ClaveCurso + " " + this.Cursos.get(i).Nombre);
         }
-        System.out.println("Elija uno");
-        opcion = sc.nextInt();
+        int opcion = Integer.parseInt(this.ObtenerTexto("Elija uno"));
         this.Cursos.remove(opcion-1);
     }
     

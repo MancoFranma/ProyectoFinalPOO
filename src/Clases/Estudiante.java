@@ -2,14 +2,13 @@ package Clases;
 
 import Excepciones.RutException;
 import Funciones.CSV;
+import Vista.MenuTexto;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Estudiante extends Persona{
 
@@ -200,59 +199,47 @@ public class Estudiante extends Persona{
      * @param Cursos refiere a los cursos en los que esta el estudiante.
      */
     public void CrearEstudiante(Curso Cursos){
-        Scanner Entrada= new Scanner(System.in);
-        System.out.println("Ingrese RUT");
-        String DATOSTRING = Entrada.next();
-        
+        Estudiante nuevoEstudiante = new Estudiante();
+        nuevoEstudiante.setRut(this.ObtenerTexto("Ingrese RUT") );
         try {
-            Persona.ValidarRut(DATOSTRING);
+            Persona.ValidarRut(nuevoEstudiante.getRut());
         } catch (RutException ex) {
             ex.printStackTrace();
             return;
         }
         
-        Estudiante nuevoEstudiante = new Estudiante();
         for(int i=0; i<this.Estudiantes.size(); i++){    
-            if (this.Estudiantes.get(i).getRut().equals(DATOSTRING)){
+            if (this.Estudiantes.get(i).getRut().equals(nuevoEstudiante.getRut())){
                 System.out.println("ESTUDIANTE YA EXISTE");
                 return ;
             }
         }
-        nuevoEstudiante.setRut(DATOSTRING);
-        System.out.println("Ingrese el Nombre del nuevo Estudiante");
-        nuevoEstudiante.setNombre(Entrada.next());
-        System.out.println("Ingrese el Apellido del nuevo Estudiante");
-        nuevoEstudiante.setApellido(Entrada.next());
-        System.out.println("Ingrese el mail del nuevo Estudiante");
-        nuevoEstudiante.setMail(Entrada.next());
-        System.out.println("Ingrese el numero de cursos que asiste el Estudiante");
-        int DATOINT = Entrada.nextInt();
+        nuevoEstudiante.setNombre(this.ObtenerTexto("Ingrese el Nombre del nuevo Estudiante") );
+        nuevoEstudiante.setApellido(this.ObtenerTexto("Ingrese el Apellido del nuevo Estudiante") );
+        nuevoEstudiante.setMail(this.ObtenerTexto("Ingrese el mail del nuevo Estudiante") );
+        int DATOINT = Integer.parseInt(this.ObtenerTexto("Ingrese el numero de cursos que asiste el Estudiante"));
+        System.out.println(DATOINT);
         Curso CursosX = new Curso();
         for (int i = 0 ; i < DATOINT ; i++){
-            System.out.println("Ingrese la Clave del curso nr" + i + " al que asiste el estudiante");
-            DATOSTRING =(Entrada.next());
+            int flag = 0;
+            CursosX.setClaveCurso(this.ObtenerTexto("Ingrese la Clave del curso nr" + i + " al que asiste el estudiante"));
             for (int j = 0 ; j < Cursos.getCursos().size();j++){
-                if(Cursos.getCursos().get(j).getClaveCurso().equals(DATOSTRING)){
+                if(Cursos.getCursos().get(j).getClaveCurso().equals(CursosX.getClaveCurso() ) ){
                     nuevoEstudiante.setArrayListCursosMatriculados(Cursos.getCursos().get(j));
                     nuevoEstudiante.setCursoMapa(Cursos.getCursos().get(j));
+                    flag = 1 ;
                     break;
                 }
-                else{
-                    CursosX.setClaveCurso(DATOSTRING);
-                    System.out.println("Ingrese el nombre del curso nr" + i + " al que asiste el estudiante");
-                    CursosX.setNombre(Entrada.next());
-                    System.out.println("Ingrese la Fecha de Inicio del curso nr" + i + " al que asiste el estudiante");
-                    CursosX.setFechaInicio(Entrada.next());
-                    System.out.println("Ingrese la Fecha de Termino del curso nr" + i + " al que asiste el estudiante");
-                    CursosX.setFechaTermino(Entrada.next());
-                    System.out.println("Ingrese la categoria que pertenece el curso nr" + i + " al que asiste el estudiante");
-                    CursosX.setCategoria(Entrada.next());
-                    System.out.println("Ingrese el ID del profesor que impartira el curso nr" + i + " al que asiste el estudiante");
-                    CursosX.setIdProfesor(Entrada.nextInt());
-                    Cursos.getCursos().add(CursosX);
-                    nuevoEstudiante.setArrayListCursosMatriculados(CursosX);
-                    nuevoEstudiante.setCursoMapa(CursosX);
-                }
+            }
+            if(flag==0){
+                CursosX.setNombre(this.ObtenerTexto("Ingrese el nombre del curso nr" + i + " al que asiste el estudiante"));
+                CursosX.setFechaInicio(this.ObtenerTexto("Ingrese la Fecha de Inicio del curso nr" + i + " al que asiste el estudiante"));
+                CursosX.setFechaTermino(this.ObtenerTexto("Ingrese la Fecha de Termino del curso nr" + i + " al que asiste el estudiante"));
+                CursosX.setCategoria(this.ObtenerTexto("Ingrese la categoria que pertenece el curso nr" + i + " al que asiste el estudiante") );
+                CursosX.setIdProfesor(Integer.parseInt(this.ObtenerTexto("Ingrese el ID del profesor que impartira el curso nr" + i + " al que asiste el estudiante")));
+                Cursos.getCursos().add(CursosX);
+                nuevoEstudiante.setArrayListCursosMatriculados(CursosX);
+                nuevoEstudiante.setCursoMapa(CursosX);
             }
         }
         Estudiantes.add(nuevoEstudiante);
@@ -263,11 +250,8 @@ public class Estudiante extends Persona{
      * matriculados entre un rango n y m.
      */
     public void MostrarAlumnoConCursosEntreNyM(){
-        Scanner Entrada = new Scanner (System.in);
-        System.out.println("Ingrese un número para empezar el rango de números que abarcará la variable 'n': ");
-        int n = Entrada.nextInt();
-        System.out.println("Ingrese un número para terminar el rango de números que abarcará la variable 'm' (que sea mayor que 'n'): ");
-        int m = Entrada.nextInt();
+        int n = Integer.parseInt(this.ObtenerTexto("Ingrese un número para empezar el rango de números que abarcará la variable 'n': "));
+        int m = Integer.parseInt(this.ObtenerTexto("Ingrese un número para terminar el rango de números que abarcará la variable 'm' (que sea mayor que 'n'): "));
         for (int i = 0; i < this.Estudiantes.size(); i++){
             if ((this.Estudiantes.get(i).getCursosMatriculados().size() >= n) && (this.Estudiantes.get(i).getCursosMatriculados().size() <= m)){
                 System.out.println("El estudiante " + this.Estudiantes.get(i).getNombre() + " " + this.Estudiantes.get(i).getApellido() + " tiene " + this.Estudiantes.get(i).getCursosMatriculados().size() + " cursos matriculados");
@@ -281,17 +265,31 @@ public class Estudiante extends Persona{
      */
     public void ElminarEstudiante(){
         
-        int i, opcion;
-        
-        Scanner sc = new Scanner(System.in);
         System.out.println("Que alumno desea eliminar");
-        for (i = 0; i < this.Estudiantes.size(); i++)
+        for (int i = 0; i < this.Estudiantes.size(); i++)
         {
             System.out.println((i + 1) + ") " + this.Estudiantes.get(i).Rut + " " + this.Estudiantes.get(i).Nombre + " " + this.Estudiantes.get(i).Apellido);
         }
-        System.out.println("Elija uno");
-        opcion = sc.nextInt();
+        int opcion = Integer.parseInt(this.ObtenerTexto("Elija uno"));
         this.Estudiantes.remove(opcion-1);
+    }
+    
+    public String ObtenerTexto(String TextoEscribir){
+        String texto = null;
+        MenuTexto menutexto = new MenuTexto(TextoEscribir);
+        menutexto.setVisible(true);
+        while(texto == null){
+            texto = menutexto.getTextoSacado();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(texto!=null)
+                System.out.println("TEXTO Guardado");
+        }
+        menutexto.dispose();
+        return texto;
     }
     
 }
