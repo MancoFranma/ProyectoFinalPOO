@@ -40,6 +40,7 @@ public class ProyectoPOO {
                         MenuAgregarElementos menuAgregar = new MenuAgregarElementos();
                         menuAgregar.setVisible(true);
                         while (comando2 != 5){
+                            Thread.sleep(500);
                             int flag = 0 ;
                             comando2 = menuAgregar.getComando();
                             switch(comando2)
@@ -65,6 +66,7 @@ public class ProyectoPOO {
                         MenuImprimirElementos menuImprimir = new MenuImprimirElementos();
                         menuImprimir.setVisible(true);
                         while (comando2 != 5){
+                            Thread.sleep(500);
                             int flag = 0 ;
                             comando2 = menuImprimir.getComando();
                             switch(comando2)
@@ -90,6 +92,7 @@ public class ProyectoPOO {
                         MenuGenerarReporte menuReporte = new MenuGenerarReporte();
                         menuReporte.setVisible(true);
                         while (comando2 != 4){
+                            Thread.sleep(500);
                             int flag = 0 ;
                             comando2 = menuReporte.getComando();
                             switch(comando2)
@@ -111,12 +114,12 @@ public class ProyectoPOO {
                 case 4:
                        MenuEliminarElementos menuEliminar = new MenuEliminarElementos();
                        menuEliminar.setVisible(true);
-                       int flag = 0 ;
-                       comando2 = menuEliminar.getComando();
                        while (comando2 != 5){
-                           System.out.println("el comando elegido es " + comando2);
+                           Thread.sleep(500);
+                           int flag = 0;
+                           comando2 = menuEliminar.getComando();
                            switch(comando2)
-                            {    
+                           {    
                                 case 1 : Cursos.ElminarCurso();
                                          flag = 1;
                                          break;
@@ -133,8 +136,9 @@ public class ProyectoPOO {
                             if(flag == 1)
                                 break ;
                        }
+                menu.resetComando();
             }
+            menu.resetComando();
         }
-        menu.resetComando();
     }
 }

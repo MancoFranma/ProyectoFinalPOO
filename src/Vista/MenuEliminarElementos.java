@@ -133,7 +133,7 @@ public class MenuEliminarElementos extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_VolverAlMenuActionPerformed
 
     private void Boton_EliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EliminarCursoActionPerformed
-        this.setComando(1);
+        this.comando = 1;
         this.dispose();
     }//GEN-LAST:event_Boton_EliminarCursoActionPerformed
 
