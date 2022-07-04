@@ -71,7 +71,7 @@ public class Profesor extends Persona{
     }
     
     /**
-     * 
+     * Esta funcion da los datos del profesor.
      * @param a refiere al profesor elegido
      * @return retorna los datos de el profesor 
      */

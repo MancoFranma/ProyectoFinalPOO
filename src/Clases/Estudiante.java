@@ -3,13 +3,9 @@ package Clases;
 import Excepciones.RutException;
 import Funciones.CSV;
 import Funciones.FuncionesVentanas;
-import Vista.MenuTexto;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Estudiante extends Persona{
 
@@ -40,6 +36,10 @@ public class Estudiante extends Persona{
         CursosMatriculados.put(Curso.getClaveCurso(), Curso);
     }
     
+    /**
+     * Eso refiere a la cantidad de cursos matriculados por el estudiante
+     * @return la cantidad de cursos  los que asiste el alumno
+     */
     public int getSizeCursosMatriculados(){
         return ArrayListCursosMatriculados.size();
     }
@@ -56,6 +56,11 @@ public class Estudiante extends Persona{
         return CursosMatriculados.get(Clave);
     }
     
+    /**
+     * Esta funcion da los datos del estudiante
+     * @param i refiere a un determinado estudiante
+     * @return los datos del estudiante
+     */
     public String DarDatos(int i){
         return ("\n Nombre: "+Nombre+"\n"+" Apellido: "+Apellido+"\n"+" Rut: "+Rut+"\n"+" Mail: "+Mail+"\nCursos Que asiste:\n\n");
     }
@@ -166,7 +171,7 @@ public class Estudiante extends Persona{
      * indicando su nula existencia.
      * 
      * @param Rut es la variable que identifica a cada persona, es unico,
-     * por ende, solo muestra a un estudiante.
+     * por ende, solo muestra a un estudiante, refiere a un estudiante en si.
      */
     public void mostrarEstudianteDeterminado(String Rut){
         int a = 0 ;

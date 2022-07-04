@@ -52,6 +52,10 @@ public class OfertaLaboral {
         Requerimientos.add(Requerimientos1);
     }
 
+    /**
+     * Da la cantidad de requerimientos de la oferta laboral.
+     * @return la cantidad de requerimientos de la oferta laboral
+     */
     public int getSizeRequerimientos(){
         return Requerimientos.size();
     }
@@ -213,7 +217,6 @@ public class OfertaLaboral {
     /**
      * Esta funcion elimina una oferta laboral seleccionada por el usuario.
      */
-    //va en la ventana, boton eliminar oferta laboral, por eso el 'obtener texto'
     public void EliminarOfertaLaboral(){
         
         FuncionesVentanas FV = new FuncionesVentanas();

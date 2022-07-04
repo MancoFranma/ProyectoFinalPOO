@@ -7,6 +7,12 @@ import java.util.logging.Logger;
 
 public class FuncionesVentanas {
     
+    /**
+     * Esta funcion crea una ventana, toma el texto de un recuadro, lo almacena
+     * y lo retorna.
+     * @param TextoEscribir lo que se escribe en la casilla
+     * @return el texto escrito
+     */
     public String ObtenerTexto(String TextoEscribir){
         String texto = null;
         MenuTexto menutexto = new MenuTexto(TextoEscribir);
