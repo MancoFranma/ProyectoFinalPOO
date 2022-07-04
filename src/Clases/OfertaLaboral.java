@@ -1,6 +1,7 @@
 package Clases;
 
 import Funciones.CSV;
+import Funciones.FuncionesVentanas;
 import Vista.MenuTexto;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -92,7 +93,7 @@ public class OfertaLaboral {
                     }
                     case 3: {
                         String [] OfertasX=acceso.get_csvField(linea, i).split(",");
-                        for(int j=0; j<OfertasX.length; j++){
+                        for(int j = 0; j < OfertasX.length; j++){
                             nuevaOferta.setRequerimientos(OfertasX[j]);
                         }
                         break;   
@@ -162,6 +163,7 @@ public class OfertaLaboral {
      * @param nombreOferta 
      */
     public void mostrarOfertaLaboralDeterminada(String nombreOferta){
+        
         int a = 0 ;
         for(int i=0; i<this.OfertasLaborales.size(); i++){
             if(this.OfertasLaborales.get(i).getNombreOferta().equals(nombreOferta)){
@@ -192,36 +194,33 @@ public class OfertaLaboral {
      * requerimientos y sueldo.
      */
     public void CrearOfertaLaboral(){
+        
+        FuncionesVentanas FV = new FuncionesVentanas();
         OfertaLaboral nuevaOfertaLaboral = new OfertaLaboral();
-        nuevaOfertaLaboral.setNombreOferta(this.ObtenerTexto("Ingrese Nombre de la nueva Oferta Laboral"));
+        nuevaOfertaLaboral.setNombreOferta(FV.ObtenerTexto("Ingrese Nombre de la nueva Oferta Laboral"));
         for(int i=0; i<this.OfertasLaborales.size(); i++){    
             if (this.OfertasLaborales.get(i).getNombreOferta().equals(nuevaOfertaLaboral.getNombreOferta())){
                 System.out.println("OFERTA LABORAL YA EXISTE");
                 return ;
             }
         }
-        nuevaOfertaLaboral.setCategoria(this.ObtenerTexto("Ingrese la Categoria de la nueva Oferta Laboral"));
-        nuevaOfertaLaboral.setRequerimientos(this.ObtenerTexto("Ingrese el Requerimiento necesario para la nueva Oferta Laboral"));
-        nuevaOfertaLaboral.setSueldo(Integer.parseInt(this.ObtenerTexto("Ingrese el Sueldo propuesto de la nueva Oferta Laboral")));
+        nuevaOfertaLaboral.setCategoria(FV.ObtenerTexto("Ingrese la Categoria de la nueva Oferta Laboral"));
+        nuevaOfertaLaboral.setRequerimientos(FV.ObtenerTexto("Ingrese el Requerimiento necesario para la nueva Oferta Laboral"));
+        nuevaOfertaLaboral.setSueldo(Integer.parseInt(FV.ObtenerTexto("Ingrese el Sueldo propuesto de la nueva Oferta Laboral")));
         OfertasLaborales.add(nuevaOfertaLaboral);
     }
     
-    public String ObtenerTexto(String TextoEscribir){
-        String texto = null;
-        MenuTexto menutexto = new MenuTexto(TextoEscribir);
-        menutexto.setVisible(true);
-        while(texto == null){
-            texto = menutexto.getTextoSacado();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(texto!=null)
-                System.out.println("TEXTO Guardado");
+    /**
+     * Esta funcion elimina una oferta laboral seleccionada por el usuario.
+     */
+    //va en la ventana, boton eliminar oferta laboral, por eso el 'obtener texto'
+    public void EliminarOfertaLaboral(){
+        
+        FuncionesVentanas FV = new FuncionesVentanas();
+        for (int i = 0; i < this.OfertasLaborales.size(); i++){
+            System.out.println( (i + 1)+ ") " + this.OfertasLaborales.get(i).NombreOferta);
         }
-        menutexto.dispose();
-        return texto;
+        int opcion = Integer.parseInt(FV.ObtenerTexto("Elija uno")); 
+        this.OfertasLaborales.remove(opcion-1);
     }
-    
 }

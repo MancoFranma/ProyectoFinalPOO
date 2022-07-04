@@ -29,6 +29,7 @@ public class MenuInterfaz extends javax.swing.JFrame {
         Boton_Agregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Boton_EliminarElemento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +65,13 @@ public class MenuInterfaz extends javax.swing.JFrame {
 
         jLabel2.setText("¿Qué desea hacer?");
 
+        Boton_EliminarElemento.setText("Eliminar Elemento");
+        Boton_EliminarElemento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_EliminarElementoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,7 +87,8 @@ public class MenuInterfaz extends javax.swing.JFrame {
                             .addComponent(Boton_Terminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Boton_Mostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Boton_Generar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Boton_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(Boton_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Boton_EliminarElemento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(130, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -100,15 +109,17 @@ public class MenuInterfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Boton_Generar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Boton_EliminarElemento, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(Boton_Terminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_TerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_TerminarActionPerformed
-        this.Comando = 4 ;
+        this.Comando = 5 ;
         this.setVisible(false);
         this.dispose();
         System.exit(0);
@@ -129,6 +140,11 @@ public class MenuInterfaz extends javax.swing.JFrame {
         this.Comando = 3 ;
         this.setVisible(false);
     }//GEN-LAST:event_Boton_GenerarActionPerformed
+
+    private void Boton_EliminarElementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_EliminarElementoActionPerformed
+        this.Comando = 4 ;
+        this.setVisible(false);
+    }//GEN-LAST:event_Boton_EliminarElementoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +192,7 @@ public class MenuInterfaz extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Agregar;
+    private javax.swing.JButton Boton_EliminarElemento;
     private javax.swing.JButton Boton_Generar;
     private javax.swing.JButton Boton_Mostrar;
     private javax.swing.JButton Boton_Terminar;

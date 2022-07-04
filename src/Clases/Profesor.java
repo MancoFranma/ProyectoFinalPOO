@@ -3,6 +3,7 @@ package Clases;
 import Clases.Persona;
 import Excepciones.RutException;
 import Funciones.CSV;
+import Funciones.FuncionesVentanas;
 import Vista.MenuTexto;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -195,8 +196,10 @@ public class Profesor extends Persona{
      * el cual va a dictar (de principio).
      */
     public void CrearProfesor(){
+        
+        FuncionesVentanas FV = new FuncionesVentanas();
         Profesor nuevoProfesor = new Profesor();
-        nuevoProfesor.setRut(this.ObtenerTexto("Ingrese RUT"));
+        nuevoProfesor.setRut(FV.ObtenerTexto("Ingrese RUT"));
         try {
             Persona.ValidarRut(nuevoProfesor.getRut());
         } catch (RutException ex) {
@@ -209,12 +212,12 @@ public class Profesor extends Persona{
                 return ;
             }
         }
-        nuevoProfesor.setIdProfesor(Integer.parseInt(this.ObtenerTexto("Ingrese el ID del nuevo Profesor")));
-        nuevoProfesor.setNombre(this.ObtenerTexto("Ingrese el Nombre del nuevo Profesor"));
-        nuevoProfesor.setApellido(this.ObtenerTexto("Ingrese el Apellido del nuevo Profesor"));
-        nuevoProfesor.setEdad(Integer.parseInt(this.ObtenerTexto("Ingrese la Edad del nuevo Profesor")));
-        nuevoProfesor.setMail(this.ObtenerTexto("Ingrese el mail del nuevo Profesor"));
-        nuevoProfesor.setCursos(this.ObtenerTexto("Ingrese el nombre del curso que imparte el profesor"));
+        nuevoProfesor.setIdProfesor(Integer.parseInt(FV.ObtenerTexto("Ingrese el ID del nuevo Profesor")));
+        nuevoProfesor.setNombre(FV.ObtenerTexto("Ingrese el Nombre del nuevo Profesor"));
+        nuevoProfesor.setApellido(FV.ObtenerTexto("Ingrese el Apellido del nuevo Profesor"));
+        nuevoProfesor.setEdad(Integer.parseInt(FV.ObtenerTexto("Ingrese la Edad del nuevo Profesor")));
+        nuevoProfesor.setMail(FV.ObtenerTexto("Ingrese el mail del nuevo Profesor"));
+        nuevoProfesor.setCursos(FV.ObtenerTexto("Ingrese el nombre del curso que imparte el profesor"));
         Profesores.add(nuevoProfesor);
     }
     
@@ -244,34 +247,17 @@ public class Profesor extends Persona{
      */
     public void ElminarProfesor(){
         
+        FuncionesVentanas FV = new FuncionesVentanas();
         System.out.println("Que profesor desea eliminar");
         for (int i = 0; i < this.Profesores.size(); i++)
         {
             System.out.println((i + 1) + ") " + this.Profesores.get(i).Rut + " " + this.Profesores.get(i).Nombre + " " + this.Profesores.get(i).Apellido);
         }
-        int opcion = Integer.parseInt(this.ObtenerTexto("Elija uno"));
+        int opcion = Integer.parseInt(FV.ObtenerTexto("Elija uno"));
         // eliminar en los cursos que dicta el nombre del profesor
         for (int j = 0; j < this.Profesores.get(opcion-1).getSize(); j++){
             //this.Profesores.get(opcion-1).Cursos.get(j)
         }
         this.Profesores.remove(opcion-1);
-    }
-    
-    public String ObtenerTexto(String TextoEscribir){
-        String texto = null;
-        MenuTexto menutexto = new MenuTexto(TextoEscribir);
-        menutexto.setVisible(true);
-        while(texto == null){
-            texto = menutexto.getTextoSacado();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(texto!=null)
-                System.out.println("TEXTO Guardado");
-        }
-        menutexto.dispose();
-        return texto;
     }
 }

@@ -36,6 +36,7 @@
                           <Component id="Boton_Mostrar" max="32767" attributes="0"/>
                           <Component id="Boton_Generar" max="32767" attributes="0"/>
                           <Component id="Boton_Agregar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Boton_EliminarElemento" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -62,8 +63,10 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Boton_Generar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="Boton_EliminarElemento" pref="29" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="Boton_Terminar" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,6 +113,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xbf;Qu&#xe9; desea hacer?"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Boton_EliminarElemento">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar Elemento"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_EliminarElementoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

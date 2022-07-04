@@ -2,6 +2,7 @@ package Clases;
 
 import Excepciones.RutException;
 import Funciones.CSV;
+import Funciones.FuncionesVentanas;
 import Vista.MenuTexto;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -199,8 +200,10 @@ public class Estudiante extends Persona{
      * @param Cursos refiere a los cursos en los que esta el estudiante.
      */
     public void CrearEstudiante(Curso Cursos){
+        
+        FuncionesVentanas FV = new FuncionesVentanas();
         Estudiante nuevoEstudiante = new Estudiante();
-        nuevoEstudiante.setRut(this.ObtenerTexto("Ingrese RUT") );
+        nuevoEstudiante.setRut(FV.ObtenerTexto("Ingrese RUT"));
         try {
             Persona.ValidarRut(nuevoEstudiante.getRut());
         } catch (RutException ex) {
@@ -214,15 +217,15 @@ public class Estudiante extends Persona{
                 return ;
             }
         }
-        nuevoEstudiante.setNombre(this.ObtenerTexto("Ingrese el Nombre del nuevo Estudiante") );
-        nuevoEstudiante.setApellido(this.ObtenerTexto("Ingrese el Apellido del nuevo Estudiante") );
-        nuevoEstudiante.setMail(this.ObtenerTexto("Ingrese el mail del nuevo Estudiante") );
-        int DATOINT = Integer.parseInt(this.ObtenerTexto("Ingrese el numero de cursos que asiste el Estudiante"));
+        nuevoEstudiante.setNombre(FV.ObtenerTexto("Ingrese el Nombre del nuevo Estudiante") );
+        nuevoEstudiante.setApellido(FV.ObtenerTexto("Ingrese el Apellido del nuevo Estudiante") );
+        nuevoEstudiante.setMail(FV.ObtenerTexto("Ingrese el mail del nuevo Estudiante") );
+        int DATOINT = Integer.parseInt(FV.ObtenerTexto("Ingrese el numero de cursos que asiste el Estudiante"));
         System.out.println(DATOINT);
         Curso CursosX = new Curso();
         for (int i = 0 ; i < DATOINT ; i++){
             int flag = 0;
-            CursosX.setClaveCurso(this.ObtenerTexto("Ingrese la Clave del curso nr" + i + " al que asiste el estudiante"));
+            CursosX.setClaveCurso(FV.ObtenerTexto("Ingrese la Clave del curso nr" + i + " al que asiste el estudiante"));
             for (int j = 0 ; j < Cursos.getCursos().size();j++){
                 if(Cursos.getCursos().get(j).getClaveCurso().equals(CursosX.getClaveCurso() ) ){
                     nuevoEstudiante.setArrayListCursosMatriculados(Cursos.getCursos().get(j));
@@ -232,11 +235,11 @@ public class Estudiante extends Persona{
                 }
             }
             if(flag==0){
-                CursosX.setNombre(this.ObtenerTexto("Ingrese el nombre del curso nr" + i + " al que asiste el estudiante"));
-                CursosX.setFechaInicio(this.ObtenerTexto("Ingrese la Fecha de Inicio del curso nr" + i + " al que asiste el estudiante"));
-                CursosX.setFechaTermino(this.ObtenerTexto("Ingrese la Fecha de Termino del curso nr" + i + " al que asiste el estudiante"));
-                CursosX.setCategoria(this.ObtenerTexto("Ingrese la categoria que pertenece el curso nr" + i + " al que asiste el estudiante") );
-                CursosX.setIdProfesor(Integer.parseInt(this.ObtenerTexto("Ingrese el ID del profesor que impartira el curso nr" + i + " al que asiste el estudiante")));
+                CursosX.setNombre(FV.ObtenerTexto("Ingrese el nombre del curso nr" + i + " al que asiste el estudiante"));
+                CursosX.setFechaInicio(FV.ObtenerTexto("Ingrese la Fecha de Inicio del curso nr" + i + " al que asiste el estudiante"));
+                CursosX.setFechaTermino(FV.ObtenerTexto("Ingrese la Fecha de Termino del curso nr" + i + " al que asiste el estudiante"));
+                CursosX.setCategoria(FV.ObtenerTexto("Ingrese la categoria que pertenece el curso nr" + i + " al que asiste el estudiante") );
+                CursosX.setIdProfesor(Integer.parseInt(FV.ObtenerTexto("Ingrese el ID del profesor que impartira el curso nr" + i + " al que asiste el estudiante")));
                 Cursos.getCursos().add(CursosX);
                 nuevoEstudiante.setArrayListCursosMatriculados(CursosX);
                 nuevoEstudiante.setCursoMapa(CursosX);
@@ -250,8 +253,10 @@ public class Estudiante extends Persona{
      * matriculados entre un rango n y m.
      */
     public void MostrarAlumnoConCursosEntreNyM(){
-        int n = Integer.parseInt(this.ObtenerTexto("Ingrese un número para empezar el rango de números que abarcará la variable 'n': "));
-        int m = Integer.parseInt(this.ObtenerTexto("Ingrese un número para terminar el rango de números que abarcará la variable 'm' (que sea mayor que 'n'): "));
+        
+        FuncionesVentanas FV = new FuncionesVentanas();
+        int n = Integer.parseInt(FV.ObtenerTexto("Ingrese un número para empezar el rango de números que abarcará la variable 'n': "));
+        int m = Integer.parseInt(FV.ObtenerTexto("Ingrese un número para terminar el rango de números que abarcará la variable 'm' (que sea mayor que 'n'): "));
         for (int i = 0; i < this.Estudiantes.size(); i++){
             if ((this.Estudiantes.get(i).getCursosMatriculados().size() >= n) && (this.Estudiantes.get(i).getCursosMatriculados().size() <= m)){
                 System.out.println("El estudiante " + this.Estudiantes.get(i).getNombre() + " " + this.Estudiantes.get(i).getApellido() + " tiene " + this.Estudiantes.get(i).getCursosMatriculados().size() + " cursos matriculados");
@@ -265,31 +270,14 @@ public class Estudiante extends Persona{
      */
     public void ElminarEstudiante(){
         
+        FuncionesVentanas FV = new FuncionesVentanas();
         System.out.println("Que alumno desea eliminar");
         for (int i = 0; i < this.Estudiantes.size(); i++)
         {
             System.out.println((i + 1) + ") " + this.Estudiantes.get(i).Rut + " " + this.Estudiantes.get(i).Nombre + " " + this.Estudiantes.get(i).Apellido);
         }
-        int opcion = Integer.parseInt(this.ObtenerTexto("Elija uno"));
+        int opcion = Integer.parseInt(FV.ObtenerTexto("Elija uno"));
         this.Estudiantes.remove(opcion-1);
-    }
-    
-    public String ObtenerTexto(String TextoEscribir){
-        String texto = null;
-        MenuTexto menutexto = new MenuTexto(TextoEscribir);
-        menutexto.setVisible(true);
-        while(texto == null){
-            texto = menutexto.getTextoSacado();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(texto!=null)
-                System.out.println("TEXTO Guardado");
-        }
-        menutexto.dispose();
-        return texto;
     }
     
 }

@@ -30,7 +30,7 @@ public class ProyectoPOO {
         Profesores.LeerProfesores();
         OfertaLaborales.leerOfertaLaboral();
         
-        while (comando != 4){
+        while (comando != 5){
             menu.setVisible(true);
             comando = menu.getComando();
             int comando2 = 0 ;
@@ -108,9 +108,33 @@ public class ProyectoPOO {
                                 break ;
                         }
                         break;
+                case 4:
+                       MenuEliminarElementos menuEliminar = new MenuEliminarElementos();
+                       menuEliminar.setVisible(true);
+                       int flag = 0 ;
+                       comando2 = menuEliminar.getComando();
+                       while (comando2 != 5){
+                           System.out.println("el comando elegido es " + comando2);
+                           switch(comando2)
+                            {    
+                                case 1 : Cursos.ElminarCurso();
+                                         flag = 1;
+                                         break;
+                                case 2 : Profesores.ElminarProfesor();
+                                         flag = 1;
+                                         break;
+                                case 3 : Estudiantes.ElminarEstudiante();
+                                         flag = 1;
+                                         break;
+                                case 4 : OfertaLaborales.EliminarOfertaLaboral();
+                                         flag = 1;
+                                         break;
+                            }
+                            if(flag == 1)
+                                break ;
+                       }
             }
-            menu.resetComando();
         }
+        menu.resetComando();
     }
-
 }

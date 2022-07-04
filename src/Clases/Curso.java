@@ -1,15 +1,11 @@
 package Clases;
 
+import Funciones.FuncionesVentanas;
 import Excepciones.FechaException;
-import Excepciones.RutException;
 import Funciones.CSV;
-import Vista.MenuTexto;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -233,8 +229,8 @@ public class Curso {
      * se crea un objeto de tipo 'Curso' y se agrega.
      */
     public void CrearCurso(){
-        Scanner Entrada= new Scanner(System.in);
-        String DATOSTRING = this.ObtenerTexto("Ingrese Clave del Curso");
+        FuncionesVentanas FV = new FuncionesVentanas();
+        String DATOSTRING = FV.ObtenerTexto("Ingrese Clave del Curso");
         Curso nuevoCurso = new Curso();
         for(int i=0; i<this.Cursos.size(); i++){    
             if (this.Cursos.get(i).getClaveCurso().equals(DATOSTRING)){
@@ -243,56 +239,38 @@ public class Curso {
             }
         }
         nuevoCurso.setClaveCurso(DATOSTRING);
-        nuevoCurso.setNombre(this.ObtenerTexto("Ingrese el Nombre del nuevo Curso"));
-        nuevoCurso.setFechaInicio(this.ObtenerTexto("Ingrese la Fecha de Inicio del nuevo Curso"));
+        nuevoCurso.setNombre(FV.ObtenerTexto("Ingrese el Nombre del nuevo Curso"));
+        nuevoCurso.setFechaInicio(FV.ObtenerTexto("Ingrese la Fecha de Inicio del nuevo Curso"));
         try{
             this.ValidarFecha(nuevoCurso.getFechaInicio() );
         } catch (FechaException ex) {
             ex.printStackTrace();
             return;
         }
-        nuevoCurso.setFechaTermino(this.ObtenerTexto("Ingrese la Fecha de Termino del nuevo Curso"));
+        nuevoCurso.setFechaTermino(FV.ObtenerTexto("Ingrese la Fecha de Termino del nuevo Curso"));
         try {
             this.ValidarFecha(nuevoCurso.getFechaTermino() );
         } catch (FechaException ex) {
             ex.printStackTrace();
             return;
         }
-        nuevoCurso.setCategoria(this.ObtenerTexto("Ingrese el nombre del la Categoria del nuevo Curso"));
-        nuevoCurso.setIdProfesor(Integer.valueOf(this.ObtenerTexto("Ingrese el numero del ID del profesor que imparte el curso")));
+        nuevoCurso.setCategoria(FV.ObtenerTexto("Ingrese el nombre del la Categoria del nuevo Curso"));
+        nuevoCurso.setIdProfesor(Integer.valueOf(FV.ObtenerTexto("Ingrese el numero del ID del profesor que imparte el curso")));
         Cursos.add(nuevoCurso);
     }
     
     /**
-     * Esta es una funcion que permite eliminar un curso.
+     * Esta funcion elimina un curso seleccionado por el usuario.
      */
     public void ElminarCurso(){
         
+        FuncionesVentanas FV = new FuncionesVentanas();
         System.out.println("Que curso desea eliminar");
         for (int i = 0; i < this.Cursos.size(); i++)
         {
             System.out.println((i + 1) + ") " + this.Cursos.get(i).ClaveCurso + " " + this.Cursos.get(i).Nombre);
         }
-        int opcion = Integer.parseInt(this.ObtenerTexto("Elija uno"));
+        int opcion = Integer.parseInt(FV.ObtenerTexto("Elija uno"));
         this.Cursos.remove(opcion-1);
     }
-    
-    public String ObtenerTexto(String TextoEscribir){
-        String texto = null;
-        MenuTexto menutexto = new MenuTexto(TextoEscribir);
-        menutexto.setVisible(true);
-        while(texto == null){
-            texto = menutexto.getTextoSacado();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Curso.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(texto!=null)
-                System.out.println("TEXTO Guardado");
-        }
-        menutexto.dispose();
-        return texto;
-    }
-    
 }
